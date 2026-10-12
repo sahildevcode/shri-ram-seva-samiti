@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import { Menu, X, HeartHandshake, MapPin, Sparkles, PhoneCall } from 'lucide-react';
+import { Menu, X, HeartHandshake, MapPin, PhoneCall } from 'lucide-react';
 import AudioChimePlayer from './AudioChimePlayer';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function HeaderNavbar({ onOpenVolunteerModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'Parichay', href: '#about' },
-    { name: '4 Mukhya Pillars', href: '#pillars' },
-    { name: 'Karyakram (Past & Upcoming)', href: '#events' },
-    { name: 'Itihas & Reference', href: '#timeline' },
-    { name: 'Photo Gallery', href: '#gallery' },
-    { name: 'Official Records', href: '#records' },
-  ];
+  const { t, lang } = useLanguage();
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
@@ -20,20 +14,20 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
       <div className="bg-gradient-to-r from-red-950 via-amber-900 to-red-950 text-amber-200/90 text-xs py-1.5 px-4 border-b border-amber-500/20 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 font-poppins tracking-wide">
-            <span className="text-amber-400 font-bold">|| Om Shri Ramchandraaya Namah ||</span>
+            <span className="text-amber-400 font-bold">{t.ribbon.mantra}</span>
             <span className="hidden md:inline text-amber-300/60">|</span>
-            <span className="hidden md:inline text-amber-200/80">Sanatan Sanskriti • Seva • Sanskar • Samarpan</span>
+            <span className="hidden md:inline text-amber-200/80">{t.ribbon.sub}</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] font-poppins">
             <div className="flex items-center gap-1 text-amber-300">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span>Chhatarpur, Madhya Pradesh</span>
+              <span>{t.ribbon.location}</span>
             </div>
             <span className="text-amber-500/40">•</span>
             <div className="flex items-center gap-1 text-amber-200 hover:text-amber-300">
               <PhoneCall className="w-3 h-3 text-amber-400" />
-              <span>Contact: +91 94251 XXXXX</span>
+              <span>{t.ribbon.contact}</span>
             </div>
           </div>
         </div>
@@ -48,7 +42,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               <div className="relative">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
-                    src="/assets/logo.jpg"
+                    src="./assets/logo.jpg"
                     alt="Shri Ram Seva Samiti Logo"
                     className="w-full h-full object-cover rounded-full"
                   />
@@ -59,20 +53,20 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               </div>
 
               <div className="flex flex-col text-left">
-                <span className="font-cinzel text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors">
-                  Shri Ram Seva Samiti
+                <span className={`text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                  {t.nav.brand}
                 </span>
                 <span className="text-[12px] sm:text-xs font-poppins text-amber-400/90 flex items-center gap-1.5">
-                  <span>Chhatarpur (M.P.)</span>
+                  <span>{t.nav.city}</span>
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                  <span className="text-amber-200/70 hidden sm:inline">Seva • Sanskar • Samarpan</span>
+                  <span className="text-amber-200/70 hidden sm:inline">{t.nav.motto}</span>
                 </span>
               </div>
             </a>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {navLinks.map((link) => (
+              {t.nav.links.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -83,24 +77,30 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               ))}
             </nav>
 
-            {/* Actions: Sound & Volunteer Button */}
+            {/* Actions: Language Switcher, Sound & Volunteer Button */}
             <div className="hidden sm:flex items-center gap-3">
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+
+              {/* Sound Player */}
               <AudioChimePlayer />
 
+              {/* Volunteer CTA */}
               <button
                 onClick={onOpenVolunteerModal}
                 className="relative group overflow-hidden px-4 py-2 rounded-full font-medium text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white font-semibold shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_25px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span className="relative z-10 flex items-center gap-1.5">
                   <HeartHandshake className="w-4 h-4 text-stone-950 group-hover:text-amber-200 transition-colors" />
-                  <span>Humse Judein</span>
+                  <span>{t.nav.joinBtn}</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Actions */}
             <div className="flex items-center gap-2 lg:hidden">
+              <LanguageSwitcher />
               <AudioChimePlayer />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -116,7 +116,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#150303] border-b border-amber-500/30 px-4 pt-3 pb-5 space-y-2">
-            {navLinks.map((link) => (
+            {t.nav.links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -126,7 +126,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
                 {link.name}
               </a>
             ))}
-            <div className="pt-3 border-t border-amber-500/20">
+            <div className="pt-3 border-t border-amber-500/20 flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -135,7 +135,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
                 className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow"
               >
                 <HeartHandshake className="w-4 h-4" />
-                <span>Humse Judein / Volunteer Banein</span>
+                <span>{t.nav.joinBtn}</span>
               </button>
             </div>
           </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Sparkles, Flame } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FooterSection({ onOpenVolunteerModal }) {
+  const { t, lang } = useLanguage();
+
   return (
     <footer className="relative bg-[#0d0202] border-t-2 border-amber-500/40 text-amber-100 font-poppins overflow-hidden z-10">
       {/* Decorative Shloka Top Bar */}
       <div className="bg-gradient-to-r from-red-950 via-[#3a0808] to-red-950 py-4 px-4 border-b border-amber-500/20 text-center">
-        <p className="font-cinzel text-sm sm:text-base md:text-lg gold-gradient-text tracking-wider">
-          || Mangal Bhavan Amangal Haari • Dravahu Su Dasarath Ajara Bihaari ||
+        <p className={`text-sm sm:text-base md:text-lg gold-gradient-text tracking-wider ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+          {t.footer.shloka}
         </p>
       </div>
 
@@ -18,114 +21,102 @@ export default function FooterSection({ onOpenVolunteerModal }) {
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-amber-400 via-red-600 to-amber-300 shadow">
                 <img
-                  src="/assets/logo.jpg"
+                  src="./assets/logo.jpg"
                   alt="Shri Ram Seva Samiti Logo"
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div>
-                <h4 className="font-cinzel text-xl font-bold text-white">
-                  Shri Ram Seva Samiti
+                <h4 className={`text-xl font-bold text-white ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                  {t.nav.brand}
                 </h4>
-                <p className="text-xs text-amber-400">Chhatarpur (Madhya Pradesh)</p>
+                <p className="text-xs text-amber-400">{t.nav.city}</p>
               </div>
             </div>
 
             <p className="text-xs sm:text-sm text-amber-100/75 leading-relaxed">
-              Bhagwan Shri Ram ke sacred ideals, Sanatan Sanskriti aur social unity ke liye Chhatarpur shahar mein dedicated religious & social samiti.
+              {t.footer.desc}
             </p>
 
             <div className="text-sm saffron-gradient-text font-bold">
-              Seva • Sanskar • Samarpan
+              {t.footer.motto}
             </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div>
-            <h5 className="font-cinzel text-lg font-bold text-amber-300 mb-4 flex items-center gap-2">
+            <h5 className={`text-lg font-bold text-amber-300 mb-4 flex items-center gap-2 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Main Sections</span>
+              <span>{t.footer.quickLinks}</span>
             </h5>
             <ul className="space-y-2 text-sm text-amber-100/80">
-              <li>
-                <a href="#about" className="hover:text-amber-300 transition-colors">
-                  • Sanstha Parichay & Mission
-                </a>
-              </li>
-              <li>
-                <a href="#pillars" className="hover:text-amber-300 transition-colors">
-                  • 4 Core Pillars
-                </a>
-              </li>
-              <li>
-                <a href="#events" className="hover:text-amber-300 transition-colors">
-                  • Past & Upcoming Events
-                </a>
-              </li>
-              <li>
-                <a href="#timeline" className="hover:text-amber-300 transition-colors">
-                  • Itihas & References
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-amber-300 transition-colors">
-                  • Photo & Video Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#records" className="hover:text-amber-300 transition-colors">
-                  • Official Records Checklist
-                </a>
-              </li>
+              {t.nav.links.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="hover:text-amber-300 transition-colors">
+                    • {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 3: Key Activities */}
           <div>
-            <h5 className="font-cinzel text-lg font-bold text-amber-300 mb-4 flex items-center gap-2">
+            <h5 className={`text-lg font-bold text-amber-300 mb-4 flex items-center gap-2 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
               <Flame className="w-4 h-4 text-amber-400" />
-              <span>Key Activities</span>
+              <span>{t.footer.activities}</span>
             </h5>
             <ul className="space-y-2 text-sm text-amber-100/80">
-              <li>• Grand Ram Navami Shobhayatra</li>
-              <li>• City Dharma Dhwaj Yatra & Sankirtan</li>
-              <li>• Shravan Month Holy Kanwar Yatra</li>
-              <li>• Annakshetra & Mahaprasad Seva</li>
-              <li>• Social Harmony & Blood Donation Camps</li>
-              <li>• Sanatan Culture & Youth Sanskar</li>
+              {lang === 'hi' ? (
+                <>
+                  <li>• भव्य रामनवमी जन्मोत्सव शोभायात्रा</li>
+                  <li>• नगर धर्म ध्वज यात्रा व संकीर्तन</li>
+                  <li>• श्रावण मास विशाल कांवड़ यात्रा</li>
+                  <li>• अन्नक्षेत्र व महाप्रसाद भंडारा सेवा</li>
+                  <li>• सामाजिक समरसता व रक्तदान शिविर</li>
+                  <li>• सनातन संस्कृति व युवा संस्कार</li>
+                </>
+              ) : (
+                <>
+                  <li>• Grand Ram Navami Shobhayatra</li>
+                  <li>• City Dharma Dhwaj Yatra & Sankirtan</li>
+                  <li>• Shravan Month Holy Kanwar Yatra</li>
+                  <li>• Annakshetra & Mahaprasad Seva</li>
+                  <li>• Social Harmony & Blood Donation Camps</li>
+                  <li>• Sanatan Culture & Youth Sanskar</li>
+                </>
+              )}
             </ul>
           </div>
 
           {/* Col 4: Contact & Location */}
           <div className="space-y-3">
-            <h5 className="font-cinzel text-lg font-bold text-amber-300 mb-4 flex items-center gap-2">
+            <h5 className={`text-lg font-bold text-amber-300 mb-4 flex items-center gap-2 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
               <MapPin className="w-4 h-4 text-amber-400" />
-              <span>Contact & Address</span>
+              <span>{t.footer.contactTitle}</span>
             </h5>
 
             <div className="text-xs sm:text-sm text-amber-100/80 space-y-2.5">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>
-                  Shri Ram Seva Samiti, Chhatarpur, Madhya Pradesh, Bharat - 471001
-                </span>
+                <span>{t.footer.address}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Contact: +91 94251 XXXXX</span>
+                <span>{t.footer.phone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Email: info@shriramsevasamiti-chhatarpur.org</span>
+                <span>{t.footer.email}</span>
               </div>
             </div>
 
             <div className="pt-2">
               <button
                 onClick={onOpenVolunteerModal}
-                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow transition transform hover:-translate-y-0.5"
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow transition transform hover:-translate-y-0.5 cursor-pointer"
               >
-                Volunteer Ke Roop Mein Judein
+                {t.footer.volunteerBtn}
               </button>
             </div>
           </div>
@@ -134,11 +125,10 @@ export default function FooterSection({ onOpenVolunteerModal }) {
         {/* Bottom Rights Bar */}
         <div className="mt-12 pt-6 border-t border-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-amber-300/60 text-center sm:text-left">
           <div>
-            © {new Date().getFullYear()} Shri Ram Seva Samiti, Chhatarpur (Madhya Pradesh). All Rights Reserved.
+            © {new Date().getFullYear()} {t.nav.brand}, {t.nav.city}. {t.footer.rights}
           </div>
           <div className="flex items-center gap-1 text-amber-400/80">
-            <span>Dedicated to Sanatan Sanskriti & Samaj Seva</span>
-            <span>🚩</span>
+            <span>{t.footer.tagline}</span>
           </div>
         </div>
       </div>

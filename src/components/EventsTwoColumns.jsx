@@ -14,6 +14,7 @@ import {
 import confetti from 'canvas-confetti';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,7 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
   const leftColRef = useRef(null);
   const rightColRef = useRef(null);
   const [remindedEvents, setRemindedEvents] = useState({});
+  const { t, lang } = useLanguage();
 
   const handleReminder = (eventId) => {
     setRemindedEvents((prev) => ({ ...prev, [eventId]: true }));
@@ -69,101 +71,6 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
     return () => ctx.revert();
   }, []);
 
-  const pastEvents = [
-    {
-      id: 'past-1',
-      title: '19va Bhavya Shri Ram Janmotsav & Dharma Dhwaj Yatra',
-      date: '23 March 2024',
-      location: 'Chhatrasal Chowk se Ram Mandir Parisar, Chhatarpur',
-      status: 'Successfully Completed',
-      badge: 'Historic Participation',
-      description:
-        'Bhagwan Shri Ram ke 19ve Janmotsav ke mauke par grand Dharma Dhwaj Yatra nikali gayi. Hazaron bhakto ne poore shahar mein phool barsakar yatra ka grand swagat kiya.',
-      highlights: ['19th Year Celebration', 'Grand Dharma Dhwaj Yatra', 'Mahaprasad Bhandara'],
-    },
-    {
-      id: 'past-2',
-      title: 'Shravan Maas Bhavya Kanwar Yatra & Jalabhishek',
-      date: 'August 2023',
-      location: 'Panna Naka se Mahakaleshwar Mandir, Chhatarpur',
-      status: 'Successfully Completed',
-      badge: 'Religious & Cultural',
-      description:
-        'August 2023 mein samiti dwara grand Kanwar Yatra aayojit ki gayi, jisme Chhatarpur aur aas-paas ke saikado shivbhakto ne pavitra jal lekar shivling par jalabhishek kiya.',
-      highlights: ['Hundreds of Kanwariyas', 'Kanwar Seva Camp', 'Grand Jalabhishek'],
-    },
-    {
-      id: 'past-3',
-      title: 'Ram Navami Shobhayatra & Dharma Dhwaj Sthapana',
-      date: '14 April 2008 (Initial Public Reference)',
-      location: 'Chhatarpur Main Market & Old City',
-      status: 'Historic Public Reference',
-      badge: 'Historic Record',
-      description:
-        '14 April 2008 ki news report mein Chhatarpur ki Ram Navami Shobhayatra ke organizer ke roop mein Shri Ram Seva Samiti ka official mention darj hai.',
-      highlights: ['Nagar Shobhayatra', 'Sanatan Awareness', 'Newspaper Published Reference'],
-    },
-    {
-      id: 'past-4',
-      title: 'Samuhik Sunderkand Path & Annakshetra Mahaprasad',
-      date: 'Shri Hanuman Janmotsav',
-      location: 'Mote Ke Mahavir Mandir Parisar, Chhatarpur',
-      status: 'Successfully Completed',
-      badge: 'Seva & Sankirtan',
-      description:
-        'Samiti dwara samuhik Sunderkand path aur 5000+ devotees ke liye pure desi ghee ka mahaprasad bhandara successfully organize kiya gaya.',
-      highlights: ['5000+ Devotees', 'Annakshetra Seva', 'Akhand Sankirtan'],
-    },
-  ];
-
-  const upcomingEvents = [
-    {
-      id: 'upcoming-1',
-      title: '20va Bhavya Shri Ram Janmotsav & Dharma Dhwaj Mahayatra',
-      date: 'Upcoming Ram Navami Mahaparva (Chaitra Shukla Navami)',
-      location: 'Chhatrasal Chowk & Poora Nagar, Chhatarpur',
-      status: 'Grand Preparations Going On',
-      badge: 'Main Annual Festival',
-      description:
-        '20ve saal ke celebration par historic Dharma Dhwaj Mahayatra, 101 feet dhwaj, divine Ram Rath, saints ka blessings aur poore shahar mein grand welcome.',
-      highlights: ['101 Feet Dharma Dhwaj', 'Saint Blessings', 'Grand Mahaprasad Bhandara'],
-      isMain: true,
-    },
-    {
-      id: 'upcoming-2',
-      title: 'Janmotsav Se Pehle Prabhat Pheri & Sunderkand Sankirtan',
-      date: 'Ram Navami se 7 Din Pehle (Morning 6:00 AM)',
-      location: 'Different Wards & Mohallas, Chhatarpur',
-      status: 'Planning Ready',
-      badge: 'Public Awareness Drive',
-      description:
-        'City ke alag-alag mohallo mein morning prabhat pheri, Ram Dhun sankirtan aur ghar-ghar Dharma Dhwaj distribute karne ka sacred mission.',
-      highlights: ['Ghar-Ghar Dharma Dhwaj', 'Prabhat Pheri Sankirtan', 'Youth Participation'],
-    },
-    {
-      id: 'upcoming-3',
-      title: 'Free Health Checkup & Blood Donation Mega Camp',
-      date: 'Upcoming Month Ka First Sunday',
-      location: 'Samiti Seva Kendra, Chhatarpur',
-      status: 'Volunteer Registration Open',
-      badge: 'Social Service Wing',
-      description:
-        'Manav Seva Hi Madhav Seva ke vision ke sath senior doctors ki team dwara free consultation, medicine distribution aur voluntary blood donation camp.',
-      highlights: ['Free Medicines', 'Raktdaan Mahadaan', 'Specialist Doctors'],
-    },
-    {
-      id: 'upcoming-4',
-      title: 'Shravan Kanwar Yatra & Free Seva Camp',
-      date: 'Upcoming Shravan Month (First Monday)',
-      location: 'Chhatarpur Sangam Route',
-      status: 'Planned',
-      badge: 'Kanwar Seva',
-      description:
-        'Kanwar yatriyo ke liye 24 ghante refreshment, rest rooms, first-aid aur drinking water seva camp Shri Ram Seva Samiti dwara lagaya jayega.',
-      highlights: ['24-Hour Seva Camp', 'Medical Support', 'Devotee Hospitality'],
-    },
-  ];
-
   return (
     <section
       id="events"
@@ -174,20 +81,20 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
           <Flame className="w-3.5 h-3.5 text-amber-400" />
-          <span>Samiti Activities Ka Systematic Record</span>
+          <span>{t.events.badge}</span>
         </div>
-        <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-          Karyakram Details: Pichhle & Aagami
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+          {t.events.title}
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-3"></div>
         <p className="text-amber-100/80 text-sm sm:text-base">
-          Samiti dwara safalta se sampann kiye gaye historic events aur aane wale grand programs ki complete list
+          {t.events.desc}
         </p>
       </div>
 
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-        {/* COLUMN 1: Pichhle Karyakram (Past Events) */}
+        {/* COLUMN 1: Past Events */}
         <div
           ref={leftColRef}
           className="rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#1c0404] via-[#170303] to-[#110202] border border-amber-500/30 shadow-[0_15px_45px_rgba(0,0,0,0.7)] relative"
@@ -199,24 +106,24 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
                 <CalendarCheck className="w-6 h-6 text-amber-400" />
               </div>
               <div>
-                <h3 className="font-cinzel text-2xl sm:text-3xl font-bold text-white">
-                  Pichhle Karyakram
+                <h3 className={`text-2xl sm:text-3xl font-bold text-white ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                  {t.events.pastCol.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-amber-300/80">
-                  Successfully completed historic events
+                  {t.events.pastCol.sub}
                 </p>
               </div>
             </div>
 
             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Verified Details</span>
+              <span>{t.events.pastCol.statusVerified}</span>
             </span>
           </div>
 
           {/* List of Past Events */}
           <div className="space-y-5">
-            {pastEvents.map((event) => (
+            {t.events.pastList.map((event) => (
               <div
                 key={event.id}
                 className="group p-5 rounded-2xl bg-[#240606]/70 hover:bg-[#2b0808] border border-amber-500/20 hover:border-amber-400/50 transition-all duration-300 shadow-sm hover:shadow-[0_8px_25px_rgba(245,158,11,0.15)]"
@@ -231,7 +138,7 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
                   </span>
                 </div>
 
-                <h4 className="font-cinzel text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                <h4 className={`text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                   {event.title}
                 </h4>
 
@@ -265,7 +172,7 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
           </div>
         </div>
 
-        {/* COLUMN 2: Aagami Karyakram (Upcoming Events) */}
+        {/* COLUMN 2: Upcoming Events */}
         <div
           ref={rightColRef}
           className="rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#220606] via-[#1a0404] to-[#120202] border border-amber-500/40 shadow-[0_15px_45px_rgba(245,158,11,0.15)] relative"
@@ -280,24 +187,24 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
                 <CalendarClock className="w-6 h-6 text-amber-300 animate-pulse" />
               </div>
               <div>
-                <h3 className="font-cinzel text-2xl sm:text-3xl font-bold text-white">
-                  Aagami Karyakram
+                <h3 className={`text-2xl sm:text-3xl font-bold text-white ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                  {t.events.upcomingCol.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-amber-300/80">
-                  Upcoming grand events & participation
+                  {t.events.upcomingCol.sub}
                 </p>
               </div>
             </div>
 
             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-400/40 flex items-center gap-1 animate-pulse">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Invitation Open</span>
+              <span>{t.events.upcomingCol.statusInvite}</span>
             </span>
           </div>
 
           {/* List of Upcoming Events */}
           <div className="space-y-5">
-            {upcomingEvents.map((event) => {
+            {t.events.upcomingList.map((event) => {
               const isReminded = remindedEvents[event.id];
 
               return (
@@ -319,7 +226,7 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
                     </span>
                   </div>
 
-                  <h4 className="font-cinzel text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                  <h4 className={`text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                     {event.title}
                   </h4>
 
@@ -360,14 +267,14 @@ export default function EventsTwoColumns({ onOpenVolunteerModal }) {
                         }`}
                       >
                         <Bell className="w-3.5 h-3.5" />
-                        <span>{isReminded ? 'Reminder Set!' : 'Remind Me'}</span>
+                        <span>{isReminded ? t.events.remindedBtn : t.events.remindBtn}</span>
                       </button>
 
                       <button
                         onClick={onOpenVolunteerModal}
                         className="px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white transition shadow flex items-center gap-1"
                       >
-                        <span>Join</span>
+                        <span>{t.events.joinBtn}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </button>
                     </div>

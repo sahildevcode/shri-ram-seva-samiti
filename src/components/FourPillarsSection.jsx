@@ -2,59 +2,31 @@ import React, { useEffect, useRef } from 'react';
 import { Calendar, Heart, Image as ImageIcon, UserCheck, ArrowRight, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FourPillarsSection({ onOpenVolunteerModal }) {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
+  const { t, lang } = useLanguage();
 
-  const pillars = [
-    {
-      id: 'dharmik-aayojan',
-      title: 'Dharmik Aayojan',
-      desc: 'Ram Navami, Shri Ram Janmotsav, Dharma Dhwaj Yatra aur verified religious events ki complete details, dates aur photos.',
-      image: '/assets/dharmik_aayojan.png',
-      icon: Calendar,
-      actionText: 'Event Details Dekhein',
-      badge: 'Sanatan Tradition',
-      target: '#events',
-    },
-    {
-      id: 'samaj-seva',
-      title: 'Samaj Seva',
-      desc: 'Samiti dwara ground level par kiye gaye seva karyo, social initiatives aur bhandara distribution ki information.',
-      image: '/assets/samaj_seva.png',
-      icon: Heart,
-      actionText: 'Seva Work Details',
-      badge: 'Manav Seva Hi Madhav Seva',
-      target: '#about',
-    },
-    {
-      id: 'gallery-pillar',
-      title: 'Photo & Video Gallery',
-      desc: 'Pichhle grand aayojano, yatraon, dharmik karyakramo aur cultural activities ka exclusive visual collection.',
-      image: '/assets/gallery_thumb.png',
-      icon: ImageIcon,
-      actionText: 'Poori Gallery Dekhein',
-      badge: 'Historic Moments',
-      target: '#gallery',
-    },
-    {
-      id: 'hamse-judein',
-      title: 'Humse Judein',
-      desc: 'Samiti se connect karne, volunteer banne aur upcoming events ki updates paane ka direct option.',
-      image: '/assets/hamse_judein.png',
-      icon: UserCheck,
-      actionText: 'Volunteer Form Bharein',
-      badge: 'Community Join',
-      onClick: onOpenVolunteerModal,
-    },
-  ];
+  const iconMap = {
+    'dharmik-aayojan': Calendar,
+    'samaj-seva': Heart,
+    'gallery-pillar': ImageIcon,
+    'hamse-judein': UserCheck,
+  };
+
+  const imageMap = {
+    'dharmik-aayojan': './assets/dharmik_aayojan.png',
+    'samaj-seva': './assets/samaj_seva.png',
+    'gallery-pillar': './assets/gallery_thumb.png',
+    'hamse-judein': './assets/hamse_judein.png',
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate cards on scroll with stagger and fade-in
       gsap.fromTo(
         cardsRef.current,
         {
@@ -79,7 +51,7 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [lang]);
 
   return (
     <section
@@ -91,21 +63,23 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
       <div className="text-center max-w-3xl mx-auto mb-14">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>Website Ke Liye Mukhya Pillars</span>
+          <span>{t.pillars.badge}</span>
         </div>
-        <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-          4. Website Ke Liye Anya Upyogi Section
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+          {t.pillars.title}
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-3"></div>
         <p className="text-amber-100/80 text-sm sm:text-base">
-          Samiti ki activities, public service aur cultural work ko represent karne wale 4 main pillars
+          {t.pillars.desc}
         </p>
       </div>
 
       {/* Grid of the 4 Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {pillars.map((pillar, idx) => {
-          const Icon = pillar.icon;
+        {t.pillars.items.map((pillar, idx) => {
+          const Icon = iconMap[pillar.id] || Sparkles;
+          const imgSrc = imageMap[pillar.id];
+
           return (
             <div
               key={pillar.id}
@@ -118,7 +92,7 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
               {/* Exact Thumbnail Image with Rounded Borders & Fade-In Styling */}
               <div className="relative shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden p-1 bg-gradient-to-tr from-amber-500/40 via-red-600/40 to-amber-300/40 shadow-md">
                 <img
-                  src={pillar.image}
+                  src={imgSrc}
                   alt={pillar.title}
                   className="w-full h-full object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-110 filter brightness-95 group-hover:brightness-105"
                   loading="lazy"
@@ -137,7 +111,7 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
                     </span>
                   </div>
 
-                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
+                  <h3 className={`text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center justify-center sm:justify-start gap-2 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                     <Icon className="w-5 h-5 text-amber-400 shrink-0" />
                     <span>{pillar.title}</span>
                   </h3>
@@ -149,10 +123,10 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
 
                 {/* Action Link / Button */}
                 <div className="mt-4 pt-3 border-t border-amber-500/15 flex items-center justify-center sm:justify-between">
-                  {pillar.onClick ? (
+                  {pillar.isVolunteer ? (
                     <button
-                      onClick={pillar.onClick}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-200 transition-colors group/btn"
+                      onClick={onOpenVolunteerModal}
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-200 transition-colors group/btn cursor-pointer"
                     >
                       <span>{pillar.actionText}</span>
                       <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
@@ -168,7 +142,7 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
                   )}
 
                   <span className="hidden sm:inline text-xs text-amber-400/50">
-                    Shri Ram Seva Samiti
+                    {t.nav.brand}
                   </span>
                 </div>
               </div>

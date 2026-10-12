@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,88 +18,97 @@ export default function GallerySection() {
   const gridRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
+  const { t, lang } = useLanguage();
 
   const galleryItems = [
     {
       id: 1,
-      title: 'Grand Dharmik Aayojan & Mandir Dwar Darshan',
+      title: lang === 'hi' ? 'भव्य धार्मिक आयोजन एवं मंदिर द्वार दर्शन' : 'Grand Dharmik Aayojan & Mandir Dwar Darshan',
       category: 'dharmik',
-      categoryName: 'Dharmik Aayojan',
-      image: '/assets/dharmik_aayojan.png',
-      location: 'Chhatarpur',
-      desc: 'Ram Navami aur Shri Ram Janmotsav par grand floral decoration aur bhakto ki bheed.',
+      categoryName: lang === 'hi' ? 'धार्मिक आयोजन' : 'Dharmik Aayojan',
+      image: './assets/dharmik_aayojan.png',
+      location: lang === 'hi' ? 'छतरपुर' : 'Chhatarpur',
+      desc: lang === 'hi'
+        ? 'रामनवमी व श्रीराम जन्मोत्सव के पावन अवसर पर भव्य पुष्प सज्जा एवं श्रद्धालुओं का दर्शन प्रवाह।'
+        : 'Ram Navami aur Shri Ram Janmotsav par grand floral decoration aur bhakto ki bheed.',
     },
     {
       id: 2,
-      title: 'Samaj Seva & Grand Mahaprasad Bhandara',
+      title: lang === 'hi' ? 'समाज सेवा एवं विशाल महाप्रसाद भंडारा' : 'Samaj Seva & Grand Mahaprasad Bhandara',
       category: 'seva',
-      categoryName: 'Samaj Seva',
-      image: '/assets/samaj_seva.png',
-      location: 'Chhatarpur Seva Ground',
-      desc: 'Samiti ke volunteers dwara devotees aur common public ke liye selfless prasad distribution.',
+      categoryName: lang === 'hi' ? 'समाज सेवा' : 'Samaj Seva',
+      image: './assets/samaj_seva.png',
+      location: lang === 'hi' ? 'छतरपुर सेवा प्रांगण' : 'Chhatarpur Seva Ground',
+      desc: lang === 'hi'
+        ? 'समिति के स्वयंसेवकों द्वारा श्रद्धालुओं एवं जनसामान्य हेतु निष्काम भाव से महाप्रसाद वितरण।'
+        : 'Samiti ke volunteers dwara devotees aur common public ke liye selfless prasad distribution.',
     },
     {
       id: 3,
-      title: 'Historic Ram Navami Shobhayatra & Saffron Rally',
+      title: lang === 'hi' ? 'ऐतिहासिक रामनवमी शोभायात्रा एवं भगवा वाहिनी' : 'Historic Ram Navami Shobhayatra & Saffron Rally',
       category: 'shobhayatra',
-      categoryName: 'Shobhayatra & Dhwaj',
-      image: '/assets/gallery_thumb.png',
-      location: 'Chhatrasal Chowk, Chhatarpur',
-      desc: 'Saffron safa, Dharma Dhwaj aur Jai Shri Ram naaro ke sath shahar mein nikali grand shobhayatra.',
+      categoryName: lang === 'hi' ? 'शोभायात्रा व ध्वज' : 'Shobhayatra & Dhwaj',
+      image: './assets/gallery_thumb.png',
+      location: lang === 'hi' ? 'छत्रसाल चौक, छतरपुर' : 'Chhatrasal Chowk, Chhatarpur',
+      desc: lang === 'hi'
+        ? 'भगवा साफा, धर्म ध्वज और श्रीराम के जयकारों के साथ नगर भ्रमण करती विशाल शोभायात्रा।'
+        : 'Saffron safa, Dharma Dhwaj aur Jai Shri Ram naaro ke sath shahar mein nikali grand shobhayatra.',
     },
     {
       id: 4,
-      title: 'Samiti Meeting & Upcoming Event Planning',
+      title: lang === 'hi' ? 'समिति बैठक एवं आगामी आयोजनों की रूपरेखा' : 'Samiti Meeting & Upcoming Event Planning',
       category: 'baithak',
-      categoryName: 'Organizational Meetings',
-      image: '/assets/hamse_judein.png',
-      location: 'Samiti Office, Chhatarpur',
-      desc: 'Officers aur members dwara Ram Navami Janmotsav ki taiyariyo par discussion meeting.',
+      categoryName: lang === 'hi' ? 'संगठनात्मक बैठकें' : 'Samiti Meetings',
+      image: './assets/hamse_judein.png',
+      location: lang === 'hi' ? 'समिति कार्यालय, छतरपुर' : 'Samiti Office, Chhatarpur',
+      desc: lang === 'hi'
+        ? 'पदाधिकारियों एवं कार्यकर्ताओं द्वारा रामनवमी जन्मोत्सव की तैयारियों को लेकर विचार-विमर्श।'
+        : 'Officers aur members dwara Ram Navami Janmotsav ki taiyariyo par discussion meeting.',
     },
     {
       id: 5,
-      title: 'Shri Ram Seva Samiti Official Logo Emblem',
+      title: lang === 'hi' ? 'श्री राम सेवा समिति आधिकारिक प्रतीक चिह्न' : 'Shri Ram Seva Samiti Official Logo Emblem',
       category: 'dharmik',
-      categoryName: 'Dharmik Aayojan',
-      image: '/assets/logo.jpg',
-      location: 'Chhatarpur (Madhya Pradesh)',
-      desc: 'Seva, Sanskar aur Samarpan motto ke sath Prabhu Shri Ram ka divine official logo.',
+      categoryName: lang === 'hi' ? 'धार्मिक आयोजन' : 'Dharmik Aayojan',
+      image: './assets/logo.jpg',
+      location: lang === 'hi' ? 'छतरपुर (मध्य प्रदेश)' : 'Chhatarpur (Madhya Pradesh)',
+      desc: lang === 'hi'
+        ? 'सेवा, संस्कार और समर्पण के ध्येय के साथ प्रभु श्रीराम की पावन छवि युक्त अधिकृत लोगो।'
+        : 'Seva, Sanskar aur Samarpan motto ke sath Prabhu Shri Ram ka divine official logo.',
     },
     {
       id: 6,
-      title: 'Shravan Maas Sacred Kanwar Yatra',
+      title: lang === 'hi' ? 'श्रावण मास पवित्र कांवड़ यात्रा' : 'Shravan Maas Sacred Kanwar Yatra',
       category: 'shobhayatra',
-      categoryName: 'Shobhayatra & Dhwaj',
+      categoryName: lang === 'hi' ? 'शोभायात्रा व ध्वज' : 'Shobhayatra & Dhwaj',
       image: 'https://images.unsplash.com/photo-1609342122563-a43ac8917a3a?q=80&w=1000&auto=format&fit=crop',
-      location: 'Panna Naka se Mahakaleshwar',
-      desc: 'Bol Bam aur Har Har Mahadev ke naaro ke sath jalabhishek karne nikle kanwariyas ka josh.',
+      location: lang === 'hi' ? 'पन्ना नाका से महाकालेश्वर' : 'Panna Naka se Mahakaleshwar',
+      desc: lang === 'hi'
+        ? 'बोल बम एवं हर-हर महादेव के जयकारों के साथ पवित्र जलाभिषेक हेतु कांवड़ियों का उत्साह।'
+        : 'Bol Bam aur Har Har Mahadev ke naaro ke sath jalabhishek karne nikle kanwariyas ka josh.',
     },
     {
       id: 7,
-      title: 'Grand Deepotsav & Aarti Sankirtan',
+      title: lang === 'hi' ? 'सामूहिक दीपोत्सव एवं आरती संकीर्तन' : 'Grand Deepotsav & Aarti Sankirtan',
       category: 'dharmik',
-      categoryName: 'Dharmik Aayojan',
+      categoryName: lang === 'hi' ? 'धार्मिक आयोजन' : 'Dharmik Aayojan',
       image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1000&auto=format&fit=crop',
-      location: 'Ram Mandir Campus, Chhatarpur',
-      desc: 'Hazaron deepako ki divine light mein hui Maha Aarti aur bhajan sandhya ka scene.',
+      location: lang === 'hi' ? 'राम मंदिर प्रांगण, छतरपुर' : 'Ram Mandir Campus, Chhatarpur',
+      desc: lang === 'hi'
+        ? 'हजारों दीपों की दिव्य ज्योति में संपन्न महाआरती एवं संकीर्तन का अलौकिक दृश्य।'
+        : 'Hazaron deepako ki divine light mein hui Maha Aarti aur bhajan sandhya ka scene.',
     },
     {
       id: 8,
-      title: 'Annakshetra & Social Harmony Service',
+      title: lang === 'hi' ? 'अन्नक्षेत्र एवं सामाजिक समरसता सेवा' : 'Annakshetra & Social Harmony Service',
       category: 'seva',
-      categoryName: 'Samaj Seva',
+      categoryName: lang === 'hi' ? 'समाज सेवा' : 'Samaj Seva',
       image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1000&auto=format&fit=crop',
-      location: 'Chhatarpur',
-      desc: 'Samiti dwara regularly chalaaya jaane wala food distribution camp.',
+      location: lang === 'hi' ? 'छतरपुर' : 'Chhatarpur',
+      desc: lang === 'hi'
+        ? 'समिति द्वारा निरंतर संचालित दीन-दुखियों व श्रद्धालुओं की सेवा में समर्पित अन्नक्षेत्र।'
+        : 'Samiti dwara regularly chalaaya jaane wala food distribution camp.',
     },
-  ];
-
-  const filters = [
-    { key: 'all', label: 'All Photos (Sabhi)' },
-    { key: 'dharmik', label: 'Dharmik Aayojan' },
-    { key: 'shobhayatra', label: 'Shobhayatra & Dhwaj' },
-    { key: 'seva', label: 'Samaj Seva & Bhandara' },
-    { key: 'baithak', label: 'Samiti Meetings' },
   ];
 
   const filteredItems =
@@ -127,7 +137,7 @@ export default function GallerySection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [activeFilter]);
+  }, [activeFilter, lang]);
 
   const openLightbox = (item) => {
     setSelectedImage(item);
@@ -159,24 +169,24 @@ export default function GallerySection() {
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
           <Images className="w-3.5 h-3.5 text-amber-400" />
-          <span>Photo & Video Gallery</span>
+          <span>{t.gallery.badge}</span>
         </div>
-        <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-          Memories & Event Photos
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+          {t.gallery.title}
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-3"></div>
         <p className="text-amber-100/80 text-sm sm:text-base">
-          Pichhle aayojano, Dharma Dhwaj Yatra, seva projects aur cultural programs ka live photo collection
+          {t.gallery.desc}
         </p>
       </div>
 
       {/* Filter Tabs */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-        {filters.map((f) => (
+        {t.gallery.filters.map((f) => (
           <button
             key={f.key}
             onClick={() => setActiveFilter(f.key)}
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
               activeFilter === f.key
                 ? 'bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 font-bold shadow-[0_0_15px_rgba(245,158,11,0.4)]'
                 : 'bg-red-950/40 text-amber-200/80 hover:bg-red-900/40 border border-amber-500/20 hover:text-white'
@@ -223,7 +233,7 @@ export default function GallerySection() {
 
             {/* Caption */}
             <div className="p-4">
-              <h4 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
+              <h4 className={`text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                 {item.title}
               </h4>
               <div className="flex items-center gap-1.5 text-[11px] text-amber-300/70 mt-1">
@@ -294,7 +304,7 @@ export default function GallerySection() {
                 </span>
               </div>
 
-              <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white">
+              <h3 className={`text-xl sm:text-2xl font-bold text-white ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                 {selectedImage.title}
               </h3>
               <p className="mt-2 text-sm text-amber-100/85 leading-relaxed">
