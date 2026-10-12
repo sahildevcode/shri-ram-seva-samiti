@@ -5,10 +5,7 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Maximize2, 
-  Sparkles, 
-  Tag, 
-  MapPin, 
-  Calendar 
+  MapPin 
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -24,84 +21,84 @@ export default function GallerySection() {
   const galleryItems = [
     {
       id: 1,
-      title: 'भव्य धार्मिक आयोजन एवं मंदिर द्वार दर्शन',
+      title: 'Grand Dharmik Aayojan & Mandir Dwar Darshan',
       category: 'dharmik',
-      categoryName: 'धार्मिक आयोजन',
+      categoryName: 'Dharmik Aayojan',
       image: '/assets/dharmik_aayojan.png',
-      location: 'छतरपुर',
-      desc: 'रामनवमी व श्रीराम जन्मोत्सव के पावन अवसर पर भव्य पुष्प सज्जा एवं श्रद्धालुओं का दर्शन प्रवाह।',
+      location: 'Chhatarpur',
+      desc: 'Ram Navami aur Shri Ram Janmotsav par grand floral decoration aur bhakto ki bheed.',
     },
     {
       id: 2,
-      title: 'समाज सेवा एवं विशाल महाप्रसाद भंडारा',
+      title: 'Samaj Seva & Grand Mahaprasad Bhandara',
       category: 'seva',
-      categoryName: 'समाज सेवा',
+      categoryName: 'Samaj Seva',
       image: '/assets/samaj_seva.png',
-      location: 'छतरपुर सेवा प्रांगण',
-      desc: 'समिति के स्वयंसेवकों द्वारा श्रद्धालुओं एवं जनसामान्य हेतु निष्काम भाव से महाप्रसाद वितरण।',
+      location: 'Chhatarpur Seva Ground',
+      desc: 'Samiti ke volunteers dwara devotees aur common public ke liye selfless prasad distribution.',
     },
     {
       id: 3,
-      title: 'ऐतिहासिक रामनवमी शोभायात्रा एवं भगवा वाहिनी',
+      title: 'Historic Ram Navami Shobhayatra & Saffron Rally',
       category: 'shobhayatra',
-      categoryName: 'शोभायात्रा व ध्वज',
+      categoryName: 'Shobhayatra & Dhwaj',
       image: '/assets/gallery_thumb.png',
-      location: 'छत्रसाल चौक, छतरपुर',
-      desc: 'भगवा साफा, धर्म ध्वज और श्रीराम के जयकारों के साथ नगर भ्रमण करती विशाल शोभायात्रा।',
+      location: 'Chhatrasal Chowk, Chhatarpur',
+      desc: 'Saffron safa, Dharma Dhwaj aur Jai Shri Ram naaro ke sath shahar mein nikali grand shobhayatra.',
     },
     {
       id: 4,
-      title: 'समिति बैठक एवं आगामी आयोजनों की रूपरेखा',
+      title: 'Samiti Meeting & Upcoming Event Planning',
       category: 'baithak',
-      categoryName: 'संगठनात्मक बैठकें',
+      categoryName: 'Organizational Meetings',
       image: '/assets/hamse_judein.png',
-      location: 'समिति कार्यालय, छतरपुर',
-      desc: 'पदाधिकारियों एवं कार्यकर्ताओं द्वारा रामनवमी जन्मोत्सव की तैयारियों को लेकर विचार-विमर्श।',
+      location: 'Samiti Office, Chhatarpur',
+      desc: 'Officers aur members dwara Ram Navami Janmotsav ki taiyariyo par discussion meeting.',
     },
     {
       id: 5,
-      title: 'श्री राम सेवा समिति आधिकारिक प्रतीक चिह्न',
+      title: 'Shri Ram Seva Samiti Official Logo Emblem',
       category: 'dharmik',
-      categoryName: 'धार्मिक आयोजन',
+      categoryName: 'Dharmik Aayojan',
       image: '/assets/logo.jpg',
-      location: 'छतरपुर (मध्य प्रदेश)',
-      desc: 'सेवा, संस्कार और समर्पण के ध्येय के साथ प्रभु श्रीराम की पावन छवि युक्त अधिकृत लोगो।',
+      location: 'Chhatarpur (Madhya Pradesh)',
+      desc: 'Seva, Sanskar aur Samarpan motto ke sath Prabhu Shri Ram ka divine official logo.',
     },
     {
       id: 6,
-      title: 'श्रावण मास पवित्र कांवड़ यात्रा',
+      title: 'Shravan Maas Sacred Kanwar Yatra',
       category: 'shobhayatra',
-      categoryName: 'शोभायात्रा व ध्वज',
+      categoryName: 'Shobhayatra & Dhwaj',
       image: 'https://images.unsplash.com/photo-1609342122563-a43ac8917a3a?q=80&w=1000&auto=format&fit=crop',
-      location: 'पन्ना नाका से महाकालेश्वर',
-      desc: 'बोल बम एवं हर-हर महादेव के जयकारों के साथ पवित्र जलाभिषेक हेतु कांवड़ियों का उत्साह।',
+      location: 'Panna Naka se Mahakaleshwar',
+      desc: 'Bol Bam aur Har Har Mahadev ke naaro ke sath jalabhishek karne nikle kanwariyas ka josh.',
     },
     {
       id: 7,
-      title: 'सामूहिक दीपोत्सव एवं आरती संकीर्तन',
+      title: 'Grand Deepotsav & Aarti Sankirtan',
       category: 'dharmik',
-      categoryName: 'धार्मिक आयोजन',
+      categoryName: 'Dharmik Aayojan',
       image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1000&auto=format&fit=crop',
-      location: 'राम मंदिर प्रांगण, छतरपुर',
-      desc: 'हजारों दीपों की दिव्य ज्योति में संपन्न महाआरती एवं संकीर्तन का अलौकिक दृश्य।',
+      location: 'Ram Mandir Campus, Chhatarpur',
+      desc: 'Hazaron deepako ki divine light mein hui Maha Aarti aur bhajan sandhya ka scene.',
     },
     {
       id: 8,
-      title: 'अन्नक्षेत्र एवं सामाजिक समरसता सेवा',
+      title: 'Annakshetra & Social Harmony Service',
       category: 'seva',
-      categoryName: 'समाज सेवा',
+      categoryName: 'Samaj Seva',
       image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1000&auto=format&fit=crop',
-      location: 'छतरपुर',
-      desc: 'समिति द्वारा निरंतर संचालित दीन-दुखियों व श्रद्धालुओं की सेवा में समर्पित अन्नक्षेत्र।',
+      location: 'Chhatarpur',
+      desc: 'Samiti dwara regularly chalaaya jaane wala food distribution camp.',
     },
   ];
 
   const filters = [
-    { key: 'all', label: 'सभी तस्वीरें (All)' },
-    { key: 'dharmik', label: 'धार्मिक आयोजन' },
-    { key: 'shobhayatra', label: 'शोभायात्रा व ध्वज' },
-    { key: 'seva', label: 'समाज सेवा व भंडारा' },
-    { key: 'baithak', label: 'संगठनात्मक बैठकें' },
+    { key: 'all', label: 'All Photos (Sabhi)' },
+    { key: 'dharmik', label: 'Dharmik Aayojan' },
+    { key: 'shobhayatra', label: 'Shobhayatra & Dhwaj' },
+    { key: 'seva', label: 'Samaj Seva & Bhandara' },
+    { key: 'baithak', label: 'Samiti Meetings' },
   ];
 
   const filteredItems =
@@ -156,20 +153,20 @@ export default function GallerySection() {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 font-poppins"
     >
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs font-tiro mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
           <Images className="w-3.5 h-3.5 text-amber-400" />
-          <span>फोटो एवं वीडियो गैलरी</span>
+          <span>Photo & Video Gallery</span>
         </div>
-        <h2 className="font-rozha text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-          पावन स्मृतियाँ एवं गतिविधि संकलन
+        <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
+          Memories & Event Photos
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-3"></div>
-        <p className="text-amber-100/80 font-tiro text-sm sm:text-base">
-          पिछले आयोजनों, धर्म ध्वज यात्राओं, सेवा प्रकल्पों और सांस्कृतिक गतिविधियों का सजीव चित्र संग्रह
+        <p className="text-amber-100/80 text-sm sm:text-base">
+          Pichhle aayojano, Dharma Dhwaj Yatra, seva projects aur cultural programs ka live photo collection
         </p>
       </div>
 
@@ -179,7 +176,7 @@ export default function GallerySection() {
           <button
             key={f.key}
             onClick={() => setActiveFilter(f.key)}
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium font-tiro transition-all duration-300 ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
               activeFilter === f.key
                 ? 'bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 font-bold shadow-[0_0_15px_rgba(245,158,11,0.4)]'
                 : 'bg-red-950/40 text-amber-200/80 hover:bg-red-900/40 border border-amber-500/20 hover:text-white'
@@ -219,21 +216,21 @@ export default function GallerySection() {
               </div>
 
               {/* Category Tag Badge */}
-              <div className="absolute top-3 left-3 bg-red-950/90 text-amber-300 text-[11px] font-tiro font-semibold px-2.5 py-1 rounded-md border border-amber-500/40 backdrop-blur-xs">
+              <div className="absolute top-3 left-3 bg-red-950/90 text-amber-300 text-[11px] font-semibold px-2.5 py-1 rounded-md border border-amber-500/40 backdrop-blur-xs">
                 {item.categoryName}
               </div>
             </div>
 
             {/* Caption */}
             <div className="p-4">
-              <h4 className="font-rozha text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
+              <h4 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
                 {item.title}
               </h4>
-              <div className="flex items-center gap-1.5 text-[11px] font-tiro text-amber-300/70 mt-1">
+              <div className="flex items-center gap-1.5 text-[11px] text-amber-300/70 mt-1">
                 <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
                 <span>{item.location}</span>
               </div>
-              <p className="mt-2 text-xs font-tiro text-amber-100/70 line-clamp-2 leading-relaxed">
+              <p className="mt-2 text-xs text-amber-100/70 line-clamp-2 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -244,7 +241,7 @@ export default function GallerySection() {
       {/* Lightbox Modal with Fade-In Effect */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 transition-opacity duration-300 animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 transition-opacity duration-300"
           onClick={closeLightbox}
         >
           <div
@@ -255,7 +252,7 @@ export default function GallerySection() {
             <button
               onClick={closeLightbox}
               className="absolute top-4 right-4 z-20 p-2 rounded-full bg-red-950/80 hover:bg-red-800 text-amber-300 hover:text-white border border-amber-500/40 transition shadow"
-              aria-label="बंद करें"
+              aria-label="Close"
             >
               <X className="w-6 h-6" />
             </button>
@@ -264,14 +261,14 @@ export default function GallerySection() {
             <button
               onClick={prevImage}
               className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-red-950/80 hover:bg-amber-600 text-amber-300 hover:text-white border border-amber-500/40 transition shadow"
-              aria-label="पिछली तस्वीर"
+              aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={nextImage}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-red-950/80 hover:bg-amber-600 text-amber-300 hover:text-white border border-amber-500/40 transition shadow"
-              aria-label="अगली तस्वीर"
+              aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -281,26 +278,26 @@ export default function GallerySection() {
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
-                className="max-h-[70vh] w-auto max-w-full object-contain transition-all duration-500 transform animate-scaleUp"
+                className="max-h-[70vh] w-auto max-w-full object-contain transition-all duration-500 transform"
               />
             </div>
 
             {/* Details Footer */}
             <div className="p-6 bg-gradient-to-t from-[#140202] to-[#1f0505] border-t border-amber-500/20">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                <span className="text-xs font-tiro text-amber-400 bg-red-950 px-3 py-0.5 rounded-full border border-amber-500/30">
+                <span className="text-xs text-amber-400 bg-red-950 px-3 py-0.5 rounded-full border border-amber-500/30">
                   {selectedImage.categoryName}
                 </span>
-                <span className="text-xs font-tiro text-amber-300/80 flex items-center gap-1">
+                <span className="text-xs text-amber-300/80 flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5 text-amber-400" />
                   <span>{selectedImage.location}</span>
                 </span>
               </div>
 
-              <h3 className="font-rozha text-xl sm:text-2xl font-bold text-white">
+              <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white">
                 {selectedImage.title}
               </h3>
-              <p className="mt-2 text-sm font-tiro text-amber-100/85 leading-relaxed">
+              <p className="mt-2 text-sm text-amber-100/85 leading-relaxed">
                 {selectedImage.desc}
               </p>
             </div>

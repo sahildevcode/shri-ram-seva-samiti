@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Target, Compass, Heart, Shield, BookOpen, Sun, Sparkles } from 'lucide-react';
+import { Target, Compass, Shield, Sun } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -34,7 +34,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 font-poppins"
     >
       <div
         ref={cardRef}
@@ -46,75 +46,75 @@ export default function AboutSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs font-tiro mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
             <Sun className="w-3.5 h-3.5 text-amber-400" />
-            <span>संस्था परिचय एवं आदर्श</span>
+            <span>Sanstha Parichay & Values</span>
           </div>
 
-          <h2 className="font-rozha text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-            श्री राम सेवा समिति, छतरपुर
+          <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
+            Shri Ram Seva Samiti, Chhatarpur
           </h2>
 
-          <p className="mt-2 text-base sm:text-lg font-yatra saffron-gradient-text">
-            सेवा • संस्कार • समर्पण
+          <p className="mt-2 text-base sm:text-lg font-bold saffron-gradient-text">
+            Seva • Sanskar • Samarpan
           </p>
 
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-2"></div>
         </div>
 
-        {/* Main Editorial Content from User's Prompt */}
-        <div className="max-w-4xl mx-auto text-center md:text-justify font-tiro text-base sm:text-lg text-amber-100/90 leading-relaxed space-y-5">
+        {/* Main Content */}
+        <div className="max-w-4xl mx-auto text-center md:text-justify text-base sm:text-lg text-amber-100/90 leading-relaxed space-y-5">
           <p className="indent-0 md:indent-8">
-            <span className="font-bold text-amber-300">श्री राम सेवा समिति, छतरपुर (मध्य प्रदेश)</span> भगवान श्रीराम के आदर्शों, सनातन संस्कृति और धार्मिक परंपराओं से प्रेरित एक सामाजिक एवं धार्मिक समिति है। समिति का मुख्य उद्देश्य धार्मिक आयोजनों के माध्यम से समाज में सांस्कृतिक चेतना, सेवा भावना और सामूहिक सहभागिता को प्रोत्साहित करना है।
+            <span className="font-bold text-amber-300">Shri Ram Seva Samiti, Chhatarpur (Madhya Pradesh)</span> Bhagwan Shri Ram ke aadarsho, Sanatan Sanskriti aur religious traditions se inspired ek social & religious samiti hai. Samiti ka main mission dharmik programs ke through society mein cultural awareness, seva bhaav aur community participation ko encourage karna hai.
           </p>
           <p>
-            समिति छतरपुर में श्रीराम जन्मोत्सव एवं रामनवमी से जुड़े आयोजनों के लिए प्रतिष्ठित है। धर्म ध्वज यात्रा जैसे विराट कार्यक्रमों के माध्यम से श्रद्धालुओं को जोड़ना और भारतीय सांस्कृतिक परंपराओं को आगे बढ़ाना इसकी प्रमुख गतिविधियों में शामिल रहा है।
+            Samiti Chhatarpur mein Shri Ram Janmotsav aur Ram Navami ke aayojano ke liye jaani jaati hai. Dharma Dhwaj Yatra jaise bade programs ke through sabhi devotees ko jodna aur Bharatiya sanskritik paramparao ko aage badhana iski main activities mein shamil raha hai.
           </p>
         </div>
 
-        {/* Core Pillars Grid: संकल्प, ध्येय वाक्य, स्थान */}
+        {/* Core Pillars Grid: Sankalp, Motto, Location */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-10 border-t border-amber-500/20">
-          {/* Card 1: हमारा संकल्प */}
+          {/* Card 1: Hamara Sankalp */}
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#2a0808]/80 to-[#1c0404]/80 border border-amber-500/25 hover:border-amber-400/50 transition shadow-sm text-center">
             <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-4 border border-amber-400/30">
               <Target className="w-6 h-6" />
             </div>
-            <h3 className="font-rozha text-xl font-bold text-white mb-2">
-              हमारा संकल्प
+            <h3 className="font-cinzel text-xl font-bold text-white mb-2">
+              Hamara Sankalp
             </h3>
-            <p className="text-sm font-tiro text-amber-100/80 leading-relaxed">
-              सनातन संस्कृति का सम्मान, सामाजिक सद्भाव को प्रोत्साहन और सेवा के माध्यम से समाज से जुड़ाव।
+            <p className="text-sm text-amber-100/80 leading-relaxed">
+              Sanatan sanskriti ka respect, samajik sadbhav ko promote karna aur seva ke through society se deep connection banana.
             </p>
           </div>
 
-          {/* Card 2: हमारा ध्येय वाक्य */}
+          {/* Card 2: Hamara Dhyeya Vakya */}
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#2a0808]/80 to-[#1c0404]/80 border border-amber-500/25 hover:border-amber-400/50 transition shadow-sm text-center">
             <div className="w-12 h-12 rounded-xl bg-red-600/20 text-amber-300 flex items-center justify-center mx-auto mb-4 border border-red-500/30">
               <Compass className="w-6 h-6" />
             </div>
-            <h3 className="font-rozha text-xl font-bold text-white mb-2">
-              हमारा ध्येय वाक्य
+            <h3 className="font-cinzel text-xl font-bold text-white mb-2">
+              Hamara Dhyeya Vakya
             </h3>
-            <p className="text-sm font-yatra saffron-gradient-text text-lg leading-relaxed font-bold">
-              सेवा, संस्कार और समर्पण
+            <p className="saffron-gradient-text text-lg leading-relaxed font-bold">
+              Seva, Sanskar aur Samarpan
             </p>
-            <p className="text-xs font-tiro text-amber-200/60 mt-2">
-              मानव मात्र के प्रति सेवा एवं सांस्कृतिक मूल्यों का संरक्षण
+            <p className="text-xs text-amber-200/60 mt-2">
+              Humanity ki selfless service aur cultural values ki raksha.
             </p>
           </div>
 
-          {/* Card 3: मुख्य पहचान व स्थान */}
+          {/* Card 3: Location & Field */}
           <div className="p-6 rounded-2xl bg-gradient-to-b from-[#2a0808]/80 to-[#1c0404]/80 border border-amber-500/25 hover:border-amber-400/50 transition shadow-sm text-center">
             <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-4 border border-amber-400/30">
               <Shield className="w-6 h-6" />
             </div>
-            <h3 className="font-rozha text-xl font-bold text-white mb-2">
-              स्थान एवं कार्यक्षेत्र
+            <h3 className="font-cinzel text-xl font-bold text-white mb-2">
+              Location & Work Area
             </h3>
-            <p className="text-sm font-tiro text-amber-100/80 leading-relaxed">
-              <strong className="text-amber-300">छतरपुर, मध्य प्रदेश, भारत।</strong>
+            <p className="text-sm text-amber-100/80 leading-relaxed">
+              <strong className="text-amber-300">Chhatarpur, Madhya Pradesh, Bharat.</strong>
               <br />
-              भगवान श्रीराम के जन्मोत्सव, धार्मिक आयोजनों और सनातन संस्कृति की गतिविधियों में अग्रणी सहभागिता।
+              Bhagwan Shri Ram ke Janmotsav, dharmik aayojano aur Sanatan activities mein leading participation.
             </p>
           </div>
         </div>

@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX, BellRing } from 'lucide-react';
 
 /**
- * Web Audio API synthesizer for sacred temple bell sound and devotional ambiance.
- * Requires zero external audio files and works reliably offline and online.
+ * Web Audio API synthesizer for temple bell chime.
  */
 export default function AudioChimePlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,7 +21,6 @@ export default function AudioChimePlayer() {
     }
   };
 
-  // Synthesize a resonant sacred temple bell sound (घंटा नाद)
   const playTempleBell = (pitch = 440) => {
     initAudio();
     const ctx = audioCtxRef.current;
@@ -65,7 +63,6 @@ export default function AudioChimePlayer() {
     } else {
       setIsPlaying(true);
       playTempleBell(480);
-      // Gentle intermittent bell toll every 12 seconds
       intervalRef.current = setInterval(() => {
         const pitches = [432, 480, 528, 576];
         const nextPitch = pitches[Math.floor(Math.random() * pitches.length)];
@@ -81,7 +78,7 @@ export default function AudioChimePlayer() {
   }, []);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 font-poppins">
       <button
         onClick={toggleSound}
         className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-300 ${
@@ -89,18 +86,18 @@ export default function AudioChimePlayer() {
             ? 'bg-amber-600/30 text-amber-300 border-amber-500/50 shadow-[0_0_15px_rgba(245,158,11,0.3)] animate-pulse'
             : 'bg-red-950/40 text-amber-200/80 border-amber-500/20 hover:border-amber-400/40 hover:text-amber-100'
         }`}
-        title="दिव्य मंदिर घंटी ध्वनि शुरू/बंद करें"
+        title="Mandir Ghanti Sound On/Off"
       >
         {isPlaying ? (
           <>
             <BellRing className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-            <span className="hidden sm:inline">दिव्य घंटा नाद (सक्रिय)</span>
+            <span className="hidden sm:inline">Mandir Sound (Active)</span>
             <Volume2 className="w-3.5 h-3.5" />
           </>
         ) : (
           <>
             <VolumeX className="w-3.5 h-3.5 text-amber-400/70" />
-            <span className="hidden sm:inline">दिव्य ध्वनि सुनें</span>
+            <span className="hidden sm:inline">Mandir Sound</span>
           </>
         )}
       </button>
@@ -112,7 +109,7 @@ export default function AudioChimePlayer() {
           playTempleBell(528);
         }}
         className="p-1.5 rounded-full bg-red-900/40 hover:bg-amber-600/30 border border-amber-500/30 text-amber-300 hover:text-white transition-all transform hover:scale-110 active:scale-95"
-        title="मंदिर की घंटी बजाएं"
+        title="Ring Mandir Bell"
       >
         <BellRing className="w-3.5 h-3.5" />
       </button>

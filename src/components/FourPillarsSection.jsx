@@ -5,49 +5,49 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FourPillarsSection({ onOpenVolunteerModal, onOpenGalleryModal }) {
+export default function FourPillarsSection({ onOpenVolunteerModal }) {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
   const pillars = [
     {
       id: 'dharmik-aayojan',
-      title: 'धार्मिक आयोजन',
-      desc: 'रामनवमी, श्रीराम जन्मोत्सव, धर्म ध्वज यात्रा और अन्य सत्यापित आयोजनों का विवरण, तारीख एवं तस्वीरें।',
+      title: 'Dharmik Aayojan',
+      desc: 'Ram Navami, Shri Ram Janmotsav, Dharma Dhwaj Yatra aur verified religious events ki complete details, dates aur photos.',
       image: '/assets/dharmik_aayojan.png',
       icon: Calendar,
-      actionText: 'आयोजन विवरण देखें',
-      badge: 'सनातन परंपरा',
+      actionText: 'Event Details Dekhein',
+      badge: 'Sanatan Tradition',
       target: '#events',
     },
     {
       id: 'samaj-seva',
-      title: 'समाज सेवा',
-      desc: 'समिति द्वारा वास्तव में किए गए सेवा कार्यों, सामाजिक अभियानों और जनभागीदारी की जानकारी।',
+      title: 'Samaj Seva',
+      desc: 'Samiti dwara ground level par kiye gaye seva karyo, social initiatives aur bhandara distribution ki information.',
       image: '/assets/samaj_seva.png',
       icon: Heart,
-      actionText: 'सेवा कार्य विस्तार',
-      badge: 'मानव सेवा ही माधव सेवा',
+      actionText: 'Seva Work Details',
+      badge: 'Manav Seva Hi Madhav Seva',
       target: '#about',
     },
     {
       id: 'gallery-pillar',
-      title: 'फोटो एवं वीडियो गैलरी',
-      desc: 'पिछले आयोजनों, यात्राओं, धार्मिक कार्यक्रमों और सांस्कृतिक गतिविधियों का संग्रह।',
+      title: 'Photo & Video Gallery',
+      desc: 'Pichhle grand aayojano, yatraon, dharmik karyakramo aur cultural activities ka exclusive visual collection.',
       image: '/assets/gallery_thumb.png',
       icon: ImageIcon,
-      actionText: 'पूरी गैलरी देखें',
-      badge: 'ऐतिहासिक क्षण',
+      actionText: 'Poori Gallery Dekhein',
+      badge: 'Historic Moments',
       target: '#gallery',
     },
     {
       id: 'hamse-judein',
-      title: 'हमसे जुड़ें',
-      desc: 'समिति से संपर्क करने, स्वयंसेवक बनने और आगामी आयोजनों की जानकारी प्राप्त करने का विकल्प।',
+      title: 'Humse Judein',
+      desc: 'Samiti se connect karne, volunteer banne aur upcoming events ki updates paane ka direct option.',
       image: '/assets/hamse_judein.png',
       icon: UserCheck,
-      actionText: 'सदस्यता / स्वयंसेवक फॉर्म',
-      badge: 'सहभागिता',
+      actionText: 'Volunteer Form Bharein',
+      badge: 'Community Join',
       onClick: onOpenVolunteerModal,
     },
   ];
@@ -85,20 +85,20 @@ export default function FourPillarsSection({ onOpenVolunteerModal, onOpenGallery
     <section
       id="pillars"
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 font-poppins"
     >
       {/* Section Header matching User's 2nd Screenshot */}
       <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs font-tiro mb-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/80 border border-amber-500/30 text-amber-300 text-xs mb-3">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>वेबसाइट के लिए उपयोगी मुख्य स्तंभ</span>
+          <span>Website Ke Liye Mukhya Pillars</span>
         </div>
-        <h2 className="font-rozha text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
-          ४. वेबसाइट के लिए अन्य उपयोगी सेक्शन
+        <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold gold-gradient-text tracking-wide">
+          4. Website Ke Liye Anya Upyogi Section
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mt-4 mb-3"></div>
-        <p className="text-amber-100/80 font-tiro text-sm sm:text-base">
-          समिति की गतिविधियों, जनसेवा और सांस्कृतिक चेतना को सुगमता से प्रस्तुत करने वाले चार आधारभूत स्तंभ
+        <p className="text-amber-100/80 text-sm sm:text-base">
+          Samiti ki activities, public service aur cultural work ko represent karne wale 4 main pillars
         </p>
       </div>
 
@@ -132,17 +132,17 @@ export default function FourPillarsSection({ onOpenVolunteerModal, onOpenGallery
               <div className="flex-1 text-center sm:text-left flex flex-col justify-between h-full">
                 <div>
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1.5">
-                    <span className="text-[11px] font-medium font-tiro text-amber-400/90 bg-amber-950/60 px-2 py-0.5 rounded-full border border-amber-500/20">
+                    <span className="text-[11px] font-medium text-amber-400/90 bg-amber-950/60 px-2 py-0.5 rounded-full border border-amber-500/20">
                       {pillar.badge}
                     </span>
                   </div>
 
-                  <h3 className="font-rozha text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
+                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
                     <Icon className="w-5 h-5 text-amber-400 shrink-0" />
                     <span>{pillar.title}</span>
                   </h3>
 
-                  <p className="mt-2 text-sm text-amber-100/80 font-tiro leading-relaxed">
+                  <p className="mt-2 text-sm text-amber-100/80 leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>
@@ -167,8 +167,8 @@ export default function FourPillarsSection({ onOpenVolunteerModal, onOpenGallery
                     </a>
                   )}
 
-                  <span className="hidden sm:inline text-xs font-tiro text-amber-400/50">
-                    श्री राम सेवा समिति
+                  <span className="hidden sm:inline text-xs text-amber-400/50">
+                    Shri Ram Seva Samiti
                   </span>
                 </div>
               </div>

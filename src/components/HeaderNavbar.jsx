@@ -6,12 +6,12 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'परिचय', href: '#about' },
-    { name: 'प्रमुख स्तंभ', href: '#pillars' },
-    { name: 'कार्यक्रम (पिछले व आगामी)', href: '#events' },
-    { name: 'इतिहास व संदर्भ', href: '#timeline' },
-    { name: 'गैलरी', href: '#gallery' },
-    { name: 'अभिलेख व सत्यापन', href: '#records' },
+    { name: 'Parichay', href: '#about' },
+    { name: '4 Mukhya Pillars', href: '#pillars' },
+    { name: 'Karyakram (Past & Upcoming)', href: '#events' },
+    { name: 'Itihas & Reference', href: '#timeline' },
+    { name: 'Photo Gallery', href: '#gallery' },
+    { name: 'Official Records', href: '#records' },
   ];
 
   return (
@@ -19,21 +19,21 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
       {/* Sacred Top Ribbon */}
       <div className="bg-gradient-to-r from-red-950 via-amber-900 to-red-950 text-amber-200/90 text-xs py-1.5 px-4 border-b border-amber-500/20 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 font-tiro tracking-wide">
-            <span className="text-amber-400 font-bold">॥ ॐ श्री रामचन्द्राय नमः ॥</span>
+          <div className="flex items-center gap-2 font-poppins tracking-wide">
+            <span className="text-amber-400 font-bold">|| Om Shri Ramchandraaya Namah ||</span>
             <span className="hidden md:inline text-amber-300/60">|</span>
-            <span className="hidden md:inline text-amber-200/80">सनातन संस्कृति • सेवा • संस्कार • समर्पण</span>
+            <span className="hidden md:inline text-amber-200/80">Sanatan Sanskriti • Seva • Sanskar • Samarpan</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex items-center gap-4 text-[11px] font-poppins">
             <div className="flex items-center gap-1 text-amber-300">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span>छतरपुर, मध्य प्रदेश</span>
+              <span>Chhatarpur, Madhya Pradesh</span>
             </div>
             <span className="text-amber-500/40">•</span>
             <div className="flex items-center gap-1 text-amber-200 hover:text-amber-300">
               <PhoneCall className="w-3 h-3 text-amber-400" />
-              <span>सम्पर्क सूत्र: +91 94251 XXXXX</span>
+              <span>Contact: +91 94251 XXXXX</span>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
                     src="/assets/logo.jpg"
-                    alt="श्री राम सेवा समिति छतरपुर लोगो"
+                    alt="Shri Ram Seva Samiti Logo"
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
@@ -59,13 +59,13 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               </div>
 
               <div className="flex flex-col text-left">
-                <span className="font-rozha text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors">
-                  श्री राम सेवा समिति
+                <span className="font-cinzel text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors">
+                  Shri Ram Seva Samiti
                 </span>
-                <span className="text-[12px] sm:text-xs font-tiro text-amber-400/90 flex items-center gap-1.5">
-                  <span>छतरपुर (मध्य प्रदेश)</span>
+                <span className="text-[12px] sm:text-xs font-poppins text-amber-400/90 flex items-center gap-1.5">
+                  <span>Chhatarpur (M.P.)</span>
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                  <span className="text-amber-200/70 hidden sm:inline">सेवा • संस्कार • समर्पण</span>
+                  <span className="text-amber-200/70 hidden sm:inline">Seva • Sanskar • Samarpan</span>
                 </span>
               </div>
             </a>
@@ -93,7 +93,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               >
                 <span className="relative z-10 flex items-center gap-1.5">
                   <HeartHandshake className="w-4 h-4 text-stone-950 group-hover:text-amber-200 transition-colors" />
-                  <span>हमसे जुड़ें / सेवा</span>
+                  <span>Humse Judein</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
@@ -105,7 +105,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none"
-                aria-label="नेविगेशन मेनू खोलें"
+                aria-label="Navigation menu toggle"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -135,7 +135,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
                 className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow"
               >
                 <HeartHandshake className="w-4 h-4" />
-                <span>हमसे जुड़ें / स्वयंसेवक बनें</span>
+                <span>Humse Judein / Volunteer Banein</span>
               </button>
             </div>
           </div>
