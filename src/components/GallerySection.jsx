@@ -10,6 +10,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../context/LanguageContext';
+import { logoImg, dharmikImg, samajSevaImg, galleryImg, hamseJudeinImg } from '../assets/images';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ export default function GallerySection() {
       title: lang === 'hi' ? 'भव्य धार्मिक आयोजन एवं मंदिर द्वार दर्शन' : 'Grand Dharmik Aayojan & Mandir Dwar Darshan',
       category: 'dharmik',
       categoryName: lang === 'hi' ? 'धार्मिक आयोजन' : 'Dharmik Aayojan',
-      image: './assets/dharmik_aayojan.png',
+      image: dharmikImg,
       location: lang === 'hi' ? 'छतरपुर' : 'Chhatarpur',
       desc: lang === 'hi'
         ? 'रामनवमी व श्रीराम जन्मोत्सव के पावन अवसर पर भव्य पुष्प सज्जा एवं श्रद्धालुओं का दर्शन प्रवाह।'
@@ -37,7 +38,7 @@ export default function GallerySection() {
       title: lang === 'hi' ? 'समाज सेवा एवं विशाल महाप्रसाद भंडारा' : 'Samaj Seva & Grand Mahaprasad Bhandara',
       category: 'seva',
       categoryName: lang === 'hi' ? 'समाज सेवा' : 'Samaj Seva',
-      image: './assets/samaj_seva.png',
+      image: samajSevaImg,
       location: lang === 'hi' ? 'छतरपुर सेवा प्रांगण' : 'Chhatarpur Seva Ground',
       desc: lang === 'hi'
         ? 'समिति के स्वयंसेवकों द्वारा श्रद्धालुओं एवं जनसामान्य हेतु निष्काम भाव से महाप्रसाद वितरण।'
@@ -48,7 +49,7 @@ export default function GallerySection() {
       title: lang === 'hi' ? 'ऐतिहासिक रामनवमी शोभायात्रा एवं भगवा वाहिनी' : 'Historic Ram Navami Shobhayatra & Saffron Rally',
       category: 'shobhayatra',
       categoryName: lang === 'hi' ? 'शोभायात्रा व ध्वज' : 'Shobhayatra & Dhwaj',
-      image: './assets/gallery_thumb.png',
+      image: galleryImg,
       location: lang === 'hi' ? 'छत्रसाल चौक, छतरपुर' : 'Chhatrasal Chowk, Chhatarpur',
       desc: lang === 'hi'
         ? 'भगवा साफा, धर्म ध्वज और श्रीराम के जयकारों के साथ नगर भ्रमण करती विशाल शोभायात्रा।'
@@ -59,7 +60,7 @@ export default function GallerySection() {
       title: lang === 'hi' ? 'समिति बैठक एवं आगामी आयोजनों की रूपरेखा' : 'Samiti Meeting & Upcoming Event Planning',
       category: 'baithak',
       categoryName: lang === 'hi' ? 'संगठनात्मक बैठकें' : 'Samiti Meetings',
-      image: './assets/hamse_judein.png',
+      image: hamseJudeinImg,
       location: lang === 'hi' ? 'समिति कार्यालय, छतरपुर' : 'Samiti Office, Chhatarpur',
       desc: lang === 'hi'
         ? 'पदाधिकारियों एवं कार्यकर्ताओं द्वारा रामनवमी जन्मोत्सव की तैयारियों को लेकर विचार-विमर्श।'
@@ -70,7 +71,7 @@ export default function GallerySection() {
       title: lang === 'hi' ? 'श्री राम सेवा समिति आधिकारिक प्रतीक चिह्न' : 'Shri Ram Seva Samiti Official Logo Emblem',
       category: 'dharmik',
       categoryName: lang === 'hi' ? 'धार्मिक आयोजन' : 'Dharmik Aayojan',
-      image: './assets/logo.jpg',
+      image: logoImg,
       location: lang === 'hi' ? 'छतरपुर (मध्य प्रदेश)' : 'Chhatarpur (Madhya Pradesh)',
       desc: lang === 'hi'
         ? 'सेवा, संस्कार और समर्पण के ध्येय के साथ प्रभु श्रीराम की पावन छवि युक्त अधिकृत लोगो।'

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Sparkles, Flame } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { logoImg } from '../assets/images';
 
 export default function FooterSection({ onOpenVolunteerModal }) {
   const { t, lang } = useLanguage();
@@ -21,7 +22,7 @@ export default function FooterSection({ onOpenVolunteerModal }) {
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-amber-400 via-red-600 to-amber-300 shadow">
                 <img
-                  src="./assets/logo.jpg"
+                  src={logoImg}
                   alt="Shri Ram Seva Samiti Logo"
                   className="w-full h-full object-cover rounded-full"
                 />

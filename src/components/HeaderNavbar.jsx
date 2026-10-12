@@ -3,6 +3,7 @@ import { Menu, X, HeartHandshake, MapPin, PhoneCall } from 'lucide-react';
 import AudioChimePlayer from './AudioChimePlayer';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
+import { logoImg } from '../assets/images';
 
 export default function HeaderNavbar({ onOpenVolunteerModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               <div className="relative">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
-                    src="./assets/logo.jpg"
+                    src={logoImg}
                     alt="Shri Ram Seva Samiti Logo"
                     className="w-full h-full object-cover rounded-full"
                   />
@@ -88,7 +89,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               {/* Volunteer CTA */}
               <button
                 onClick={onOpenVolunteerModal}
-                className="relative group overflow-hidden px-4 py-2 rounded-full font-medium text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white font-semibold shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_25px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="relative group overflow-hidden px-4 py-2 rounded-full font-medium text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white font-semibold shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_25px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <span className="relative z-10 flex items-center gap-1.5">
                   <HeartHandshake className="w-4 h-4 text-stone-950 group-hover:text-amber-200 transition-colors" />
@@ -104,7 +105,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               <AudioChimePlayer />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none"
+                className="p-2 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none cursor-pointer"
                 aria-label="Navigation menu toggle"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -132,7 +133,7 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
                   setMobileMenuOpen(false);
                   onOpenVolunteerModal();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow cursor-pointer"
               >
                 <HeartHandshake className="w-4 h-4" />
                 <span>{t.nav.joinBtn}</span>

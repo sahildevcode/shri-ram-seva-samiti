@@ -3,6 +3,7 @@ import { Calendar, Heart, Image as ImageIcon, UserCheck, ArrowRight, Sparkles } 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../context/LanguageContext';
+import { dharmikImg, samajSevaImg, galleryImg, hamseJudeinImg } from '../assets/images';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,10 +20,10 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
   };
 
   const imageMap = {
-    'dharmik-aayojan': './assets/dharmik_aayojan.png',
-    'samaj-seva': './assets/samaj_seva.png',
-    'gallery-pillar': './assets/gallery_thumb.png',
-    'hamse-judein': './assets/hamse_judein.png',
+    'dharmik-aayojan': dharmikImg,
+    'samaj-seva': samajSevaImg,
+    'gallery-pillar': galleryImg,
+    'hamse-judein': hamseJudeinImg,
   };
 
   useEffect(() => {

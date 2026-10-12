@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Calendar, Users, ChevronDown, Sparkles, Award } from 'lucide-react';
 import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
+import { logoImg } from '../assets/images';
 
 export default function HeroSection({ onOpenVolunteerModal }) {
   const heroRef = useRef(null);
@@ -81,7 +82,7 @@ export default function HeroSection({ onOpenVolunteerModal }) {
 
           <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full p-2 bg-gradient-to-b from-amber-400 via-amber-700 to-red-950 shadow-[0_10px_40px_rgba(0,0,0,0.8)] transform transition-transform duration-500 group-hover:scale-105">
             <img
-              src="./assets/logo.jpg"
+              src={logoImg}
               alt="Shri Ram Seva Samiti Logo"
               className="w-full h-full object-cover rounded-full shadow-inner"
             />
@@ -118,7 +119,7 @@ export default function HeroSection({ onOpenVolunteerModal }) {
         <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
           <a
             href="#events"
-            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_25px_rgba(245,158,11,0.5)] hover:shadow-[0_0_35px_rgba(245,158,11,0.8)] transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
+            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_25px_rgba(245,158,11,0.5)] hover:shadow-[0_0_35px_rgba(245,158,11,0.8)] transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 cursor-pointer"
           >
             <Calendar className="w-5 h-5" />
             <span>{t.hero.btnEvents}</span>
@@ -126,7 +127,7 @@ export default function HeroSection({ onOpenVolunteerModal }) {
 
           <a
             href="#pillars"
-            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-red-950/70 hover:bg-red-900 border border-amber-500/40 text-amber-200 hover:text-white transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 shadow"
+            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-red-950/70 hover:bg-red-900 border border-amber-500/40 text-amber-200 hover:text-white transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 shadow cursor-pointer"
           >
             <Award className="w-5 h-5 text-amber-400" />
             <span>{t.hero.btnPillars}</span>
@@ -134,7 +135,7 @@ export default function HeroSection({ onOpenVolunteerModal }) {
 
           <button
             onClick={onOpenVolunteerModal}
-            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-transparent hover:bg-amber-500/10 border border-amber-400/50 text-amber-300 hover:text-amber-200 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
+            className="px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base bg-transparent hover:bg-amber-500/10 border border-amber-400/50 text-amber-300 hover:text-amber-200 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 cursor-pointer"
           >
             <Users className="w-5 h-5 text-amber-400" />
             <span>{t.hero.btnVolunteer}</span>
