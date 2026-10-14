@@ -1,8 +1,23 @@
-import React, { useEffect, useRef } from 'react';
-import { Calendar, Users, ChevronDown, Sparkles, Award } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Calendar, 
+  Users, 
+  ChevronDown, 
+  Sparkles, 
+  Award,
+  Flag,
+  Building2,
+  Sun,
+  Crown,
+  X,
+  CheckCircle2,
+  ChevronRight,
+  MapPin,
+  HeartHandshake
+} from 'lucide-react';
 import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
-import { logoImg } from '../assets/images';
+import { logoImg, dharmikImg, samajSevaImg, galleryImg, hamseJudeinImg } from '../assets/images';
 
 export default function HeroSection({ onOpenVolunteerModal }) {
   const heroRef = useRef(null);
@@ -11,8 +26,46 @@ export default function HeroSection({ onOpenVolunteerModal }) {
   const titleRef = useRef(null);
   const mottoRef = useRef(null);
   const statsRef = useRef(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const { t, lang } = useLanguage();
+
+  const itemConfig = {
+    dharmadhwaj: {
+      icon: Flag,
+      img: galleryImg,
+      color: 'from-amber-500 to-red-600',
+      badge: lang === 'hi' ? '१. मुख्य शोभायात्रा' : '1. Main Shobhayatra',
+    },
+    ramalaya: {
+      icon: Building2,
+      img: hamseJudeinImg,
+      color: 'from-orange-500 to-amber-600',
+      badge: lang === 'hi' ? '२. केंद्रीय संकुल' : '2. Central Office',
+    },
+    prabhatpheri: {
+      icon: Sun,
+      img: dharmikImg,
+      color: 'from-amber-400 to-yellow-600',
+      badge: lang === 'hi' ? '३. प्रातः जागरण' : '3. Morning Awakening',
+    },
+    ramdarbar: {
+      icon: Crown,
+      img: logoImg,
+      color: 'from-red-600 to-amber-500',
+      badge: lang === 'hi' ? '४. दिव्य दर्शन' : '4. Divine Darshan',
+    },
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedItem(null);
+    };
+    if (selectedItem) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedItem]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -142,21 +195,168 @@ export default function HeroSection({ onOpenVolunteerModal }) {
           </button>
         </div>
 
-        {/* Highlight Stats Row */}
-        <div
-          ref={statsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl mt-12 pt-8 border-t border-amber-500/20"
-        >
-          {t.hero.stats.map((stat, i) => (
-            <div
-              key={i}
-              className="p-4 rounded-xl bg-gradient-to-b from-red-950/50 to-stone-950/80 border border-amber-500/20 text-center hover:border-amber-400/40 transition"
-            >
-              <div className="font-bold text-2xl sm:text-3xl text-amber-300">{stat.num}</div>
-              <div className="text-xs sm:text-sm text-amber-100/70 mt-1">{stat.label}</div>
-            </div>
-          ))}
+        {/* Prestigious Since 2006 Seva Sankalp Ribbon */}
+        <div className="w-full max-w-5xl mt-12 pt-8 border-t border-amber-500/20 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-red-950 via-[#350707] to-red-950 border border-amber-400/50 shadow-[0_0_25px_rgba(245,158,11,0.3)] text-amber-200 text-xs sm:text-sm font-semibold tracking-wide mb-3 animate-pulse">
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span className="gold-gradient-text font-bold tracking-wide">
+              {t.hero.sinceBadge}
+            </span>
+            <Sparkles className="w-4 h-4 text-amber-400" />
+          </div>
+          <p className="text-xs sm:text-sm text-amber-200/80 max-w-2xl text-center mb-6 font-poppins">
+            {t.hero.sinceSubtitle}
+          </p>
+
+          {/* 4 Interactive Buttons Row (Converted from Cards) */}
+          <div
+            ref={statsRef}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full"
+          >
+            {t.hero.quickButtons.map((btn) => {
+              const cfg = itemConfig[btn.id] || {};
+              const IconComp = cfg.icon || Sparkles;
+
+              return (
+                <button
+                  key={btn.id}
+                  onClick={() => setSelectedItem(btn)}
+                  className="group relative flex flex-col items-center justify-between p-5 rounded-2xl bg-gradient-to-b from-[#2b0707] via-[#1a0404] to-[#100202] border-2 border-amber-500/35 hover:border-amber-400 shadow-[0_4px_25px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(245,158,11,0.45)] transition-all duration-300 transform hover:-translate-y-1.5 cursor-pointer text-center overflow-hidden"
+                >
+                  {/* Subtle top golden light line */}
+                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
+
+                  {/* Top Badge */}
+                  <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-400/80 mb-2 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">
+                    {cfg.badge}
+                  </div>
+
+                  {/* Icon Circle */}
+                  <div className={`w-12 h-12 rounded-full p-[2px] bg-gradient-to-tr ${cfg.color || 'from-amber-400 to-red-600'} shadow-[0_0_15px_rgba(245,158,11,0.4)] group-hover:scale-110 transition-transform duration-300 mb-3 flex items-center justify-center`}>
+                    <div className="w-full h-full rounded-full bg-[#1b0303] flex items-center justify-center text-amber-300">
+                      <IconComp className="w-6 h-6 text-amber-400 group-hover:rotate-12 transition-transform duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Button Title */}
+                  <h3 className={`text-base sm:text-lg font-bold text-amber-200 group-hover:text-amber-100 transition-colors leading-snug mb-1 ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                    {btn.title}
+                  </h3>
+
+                  {/* Button Subtitle */}
+                  <p className="text-xs text-amber-100/70 font-poppins leading-relaxed mb-4">
+                    {btn.subtitle}
+                  </p>
+
+                  {/* Bottom Action Indicator */}
+                  <div className="mt-auto w-full pt-2 border-t border-amber-500/20 flex items-center justify-center gap-1.5 text-xs font-semibold text-amber-400 group-hover:text-amber-200 group-hover:gap-2.5 transition-all">
+                    <span>{lang === 'hi' ? 'विवरण व दर्शन देखें' : 'View Details & Darshan'}</span>
+                    <ChevronRight className="w-4 h-4 text-amber-400 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Sacred Detail Modal Popup */}
+        {selectedItem && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto font-poppins animate-fade-in"
+            onClick={() => setSelectedItem(null)}
+          >
+            <div
+              className="relative max-w-2xl w-full bg-gradient-to-br from-[#280606] via-[#1a0404] to-[#100202] border-2 border-amber-500/60 rounded-3xl p-6 sm:p-8 shadow-[0_0_60px_rgba(245,158,11,0.35)] my-8 text-left max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-red-950/80 hover:bg-red-800 text-amber-300 hover:text-white border border-amber-500/40 transition cursor-pointer z-10"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Modal Top Header */}
+              <div className="text-center mb-6">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 inline-block mb-2">
+                  {selectedItem.tag || (lang === 'hi' ? 'श्री राम सेवा समिति, छतरपुर' : 'Shri Ram Seva Samiti, Chhatarpur')}
+                </span>
+                <h3 className={`text-2xl sm:text-3xl font-bold gold-gradient-text ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+                  {selectedItem.modalTitle || selectedItem.title}
+                </h3>
+              </div>
+
+              {/* Photo Banner */}
+              {itemConfig[selectedItem.id]?.img && (
+                <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden border-2 border-amber-500/30 shadow-lg mb-6 group">
+                  <img
+                    src={itemConfig[selectedItem.id].img}
+                    alt={selectedItem.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                    <span className="text-xs sm:text-sm text-amber-200 font-semibold flex items-center gap-1.5">
+                      <Sparkles className="w-4 h-4 text-amber-400" />
+                      <span>{selectedItem.subtitle}</span>
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Detailed Description */}
+              <div className="space-y-4 mb-6">
+                <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed bg-red-950/40 p-4 rounded-xl border border-amber-500/20">
+                  {selectedItem.desc}
+                </p>
+
+                {/* Highlights */}
+                {selectedItem.highlights && (
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-sm font-bold text-amber-300 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-amber-400" />
+                      <span>{lang === 'hi' ? 'प्रमुख विशेषताएं एवं संकल्प:' : 'Key Highlights & Highlights:'}</span>
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {selectedItem.highlights.map((hl, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2 p-2.5 rounded-lg bg-stone-950/60 border border-amber-500/15 text-xs sm:text-sm text-amber-100/85"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                          <span>{hl}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Modal Footer Actions */}
+              <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-amber-500/20">
+                <a
+                  href="#events"
+                  onClick={() => setSelectedItem(null)}
+                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-red-950 hover:bg-red-900 border border-amber-500/40 text-amber-200 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>{lang === 'hi' ? 'सभी कार्यक्रम देखें' : 'View All Events'}</span>
+                </a>
+                <button
+                  onClick={() => {
+                    setSelectedItem(null);
+                    onOpenVolunteerModal();
+                  }}
+                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.5)] transition flex items-center gap-1.5 cursor-pointer"
+                >
+                  <HeartHandshake className="w-4 h-4" />
+                  <span>{lang === 'hi' ? 'स्वयंसेवक के रूप में जुड़ें' : 'Join as Volunteer'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Scroll Indicator */}
         <a

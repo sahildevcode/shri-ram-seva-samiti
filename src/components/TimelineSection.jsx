@@ -19,14 +19,14 @@ export default function TimelineSection() {
 
   const timelineData = [
     {
-      year: '2008',
-      title: lang === 'hi' ? 'प्रारंभिक सार्वजनिक संदर्भ' : 'Initial Public Reference',
-      source: lang === 'hi' ? 'Hindi Oneindia समाचार रिपोर्ट' : 'Hindi Oneindia News Report',
-      date: lang === 'hi' ? '14 अप्रैल 2008' : '14 April 2008',
+      year: '2006',
+      title: lang === 'hi' ? 'सेवा संकल्प एवं गतिविधियों का शुभारंभ' : 'Seva Sankalp & Activity Inception',
+      source: lang === 'hi' ? 'समिति इतिहास एवं सार्वजनिक संदर्भ' : 'Samiti History & Public Reference',
+      date: lang === 'hi' ? 'सन् २००६' : 'Year 2006',
       desc: lang === 'hi'
-        ? '14 अप्रैल 2008 की समाचार रिपोर्ट में छतरपुर की रामनवमी शोभायात्रा के आयोजक के रूप में श्री राम सेवा समिति का सार्वजनिक उल्लेख मिलता है। यह समिति की ऐतिहासिक गतिविधियों का एक मुख्य प्रमाण है।'
-        : '14 April 2008 ki news report mein Chhatarpur ki Ram Navami Shobhayatra ke organizer ke roop mein Shri Ram Seva Samiti ka public mention milta hai. Ye samiti ke historic work ka verified proof hai.',
-      tag: lang === 'hi' ? 'शोभायात्रा संदर्भ' : 'Shobhayatra Reference',
+        ? 'सन् 2006 से छतरपुर में प्रभु श्रीराम जन्मोत्सव, रामनवमी शोभायात्रा एवं जनकल्याणकारी सेवा कार्यों के पावन संकल्प का शुभारंभ हुआ। यह समिति की अनवरत सेवा परंपरा का गौरवशाली प्रारंभिक आधार है।'
+        : 'San 2006 se Chhatarpur mein Prabhu Shri Ram Janmotsav, Ram Navami Shobhayatra aur public service work ke pavan sankalp ka shubharambh hua. Ye samiti ki continuous seva tradition ka foundation base hai.',
+      tag: lang === 'hi' ? '2006 से प्रारंभ' : 'Started 2006',
     },
     {
       year: '2023',
@@ -40,13 +40,13 @@ export default function TimelineSection() {
     },
     {
       year: '2024',
-      title: lang === 'hi' ? 'धर्म ध्वज यात्रा एवं 19वां जन्मोत्सव' : 'Dharma Dhwaj Yatra & 19th Janmotsav',
+      title: lang === 'hi' ? 'भव्य धर्म ध्वज यात्रा एवं सेवा महोत्सव' : 'Grand Dharma Dhwaj Yatra & Seva Mahotsav',
       source: lang === 'hi' ? 'Hindi News Portal रिपोर्ट' : 'Hindi News Portal Report',
       date: lang === 'hi' ? '23 मार्च 2024' : '23 March 2024',
       desc: lang === 'hi'
-        ? '23 मार्च 2024 की रिपोर्ट में रामनवमी के 19वें वर्ष के आयोजन की तैयारियों और भव्य धर्म ध्वज यात्रा का उल्लेख है। (जिससे जन्मोत्सव आयोजन का आरंभ लगभग 2006 के आसपास होने का संकेत मिलता है)।'
-        : '23 March 2024 ki report mein Ram Navami ke 19ve saal ke aayojan ki taiyariyo aur grand Dharma Dhwaj Yatra ka mention hai (jis se indication milta hai ki Janmotsav lagbhag 2006 ke aaspaas shuru hua tha).',
-      tag: lang === 'hi' ? '19वां जन्मोत्सव' : '19th Janmotsav',
+        ? '23 मार्च 2024 को रामनवमी जन्मोत्सव पर भव्य धर्म ध्वज यात्रा एवं सन् 2006 से प्रारंभ गौरवशाली सेवा परंपरा का विराट आयोजन पूरी भव्यता से संपन्न हुआ।'
+        : '23 March 2024 ko Ram Navami Janmotsav par grand Dharma Dhwaj Yatra aur San 2006 se shuru glorious seva tradition ka grand celebration poori shaan se complete hua.',
+      tag: lang === 'hi' ? '2006 से अविरल सेवा' : 'Continuous Since 2006',
     },
   ];
 

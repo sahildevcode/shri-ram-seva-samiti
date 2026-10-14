@@ -34,11 +34,76 @@ export const content = {
       btnEvents: 'कार्यक्रम विवरण (पिछले व आगामी)',
       btnPillars: 'चार प्रमुख स्तंभ देखिए',
       btnVolunteer: 'स्वयंसेवक बनें',
+      sinceBadge: 'सन् २००६ से अनवरत सनातन सेवा संकल्प • सेवा • संस्कार • समर्पण',
+      sinceSubtitle: 'दो दशकों से प्रभु श्रीराम के जन्मोत्सव, भव्य धर्म ध्वज यात्रा एवं जनकल्याण में समर्पित',
+      quickButtonsTitle: 'समिति के मुख्य पावन प्रकल्प एवं दर्शन',
+      quickButtons: [
+        {
+          id: 'dharmadhwaj',
+          title: 'धर्म ध्वजा यात्रा',
+          subtitle: 'विशाल नगर शोभायात्रा व संकीर्तन',
+          iconName: 'flag',
+          modalTitle: '॥ भव्य धर्म ध्वजा यात्रा ॥',
+          tag: 'छतरपुर नगर भ्रमण',
+          desc: 'श्री राम सेवा समिति द्वारा प्रतिवर्ष श्रीराम जन्मोत्सव एवं पावन अवसरों पर छतरपुर में भव्य धर्म ध्वजा यात्रा का आयोजन किया जाता है। 51 फीट ऊंचे विशाल धर्म ध्वज, सुसज्जित रथों, भगवा ध्वज वाहकों और श्रीराम के जयघोष के साथ हजारों रामभक्त नगर के मुख्य मार्गों से संकीर्तन करते हुए निकलते हैं।',
+          highlights: [
+            '51+ फीट ऊंचा भव्य धर्म ध्वज एवं भगवा साफा वाहिनी',
+            'छत्रसाल चौक से प्रारंभ होकर मुख्य नगर मार्गों पर भ्रमण',
+            'नगरवासियों द्वारा जगह-जगह पुष्पवर्षा एवं आरती से भव्य स्वागत',
+            'यात्रा के उपरांत विशाल महाआरती एवं महाप्रसाद वितरण'
+          ]
+        },
+        {
+          id: 'ramalaya',
+          title: 'रामालय कार्यालय का शुभारंभ',
+          subtitle: 'केंद्रीय संगठनात्मक व सेवा संकुल',
+          iconName: 'building',
+          modalTitle: '॥ "रामालय" केंद्रीय कार्यालय का पावन शुभारंभ ॥',
+          tag: 'समिति का मुख्य प्रशासनिक केंद्र',
+          desc: 'श्री राम सेवा समिति के सभी धार्मिक आयोजनों, समाज सेवा प्रकल्पों और सांस्कृतिक गतिविधियों को सुव्यवस्थित रूप से संचालित करने हेतु केंद्रीय कार्यालय "रामालय" का शुभारंभ किया गया है। यह केंद्र सभी स्वयंसेवकों के मिलन, विचार-विमर्श और जनसेवा योजनाओं की कार्यशाला है।',
+          highlights: [
+            'समस्त धार्मिक, सामाजिक एवं सांस्कृतिक कार्यक्रमों का केंद्रीय संचालन',
+            'श्रीराम जन्मोत्सव एवं आगामी आयोजनों की रूपरेखा व बैठक केंद्र',
+            'रामभक्तों, समाजसेवियों व युवाओं के लिए समर्पित संपर्क स्थल',
+            'छतरपुर में सनातन सेवा संस्कृति का मुख्य आधार स्तम्भ'
+          ]
+        },
+        {
+          id: 'prabhatpheri',
+          title: 'प्रभात फेरी',
+          subtitle: 'प्रातःकालीन रामधुन व नगर जागरण',
+          iconName: 'sun',
+          modalTitle: '॥ पावन प्रभात फेरी एवं राम संकीर्तन ॥',
+          tag: 'ब्रह्ममुहूर्त आध्यात्मिक जागरण',
+          desc: 'श्रीराम जन्मोत्सव एवं पावन पर्वों के उपलक्ष्य में प्रातःकाल ब्रह्ममुहूर्त में नगर में प्रभात फेरी निकाली जाती है। ढोलक, मंजीरे और करताल की मधुर थाप पर "श्री राम जय राम जय जय राम" की गूंज के साथ श्रद्धालु घर-घर जाकर धर्म, संस्कार और भक्ति का पावन संदेश देते हैं।',
+          highlights: [
+            'प्रातःकाल 5:00 बजे से नगर के विभिन्न मोहल्लों में प्रभात फेरी',
+            'सामूहिक राम संकीर्तन, सुंदरकांड चौपाइयां एवं प्रभाती भजन',
+            'माताओं-बहनों द्वारा घर के मुख्य द्वार पर रंगोली व दीप प्रज्वलन',
+            'युवाओं और बच्चों में सनातन धर्म व संस्कारों का बीजारोपण'
+          ]
+        },
+        {
+          id: 'ramdarbar',
+          title: 'राम दरबार',
+          subtitle: 'दिव्य विग्रह एवं अखंड कृपा दर्शन',
+          iconName: 'crown',
+          modalTitle: '॥ मर्यादा पुरुषोत्तम श्री राम दरबार दर्शन ॥',
+          tag: 'अलौकिक विग्रह व संकीर्तन',
+          desc: 'प्रभु श्रीराम, जगज्जननी माता जानकी, भ्राता लक्ष्मण एवं संकटमोचन वीर हनुमान जी का अलौकिक राम दरबार। समिति के प्रत्येक कार्य, सेवा और संकल्प की प्रेरणा प्रभु श्रीराम का यही दिव्य स्वरूप है। दरबार में नित्य दर्शन, पूजन और पावन आरती से संपूर्ण वातावरण आध्यात्मिक दिव्यता से भर जाता है।',
+          highlights: [
+            'प्रभु श्रीराम, माता सीता, लक्ष्मण जी व हनुमान जी का दिव्य शृंगार',
+            'सेवा, संस्कार और समर्पण के सनातन आदर्शों का अमर प्रतीक',
+            'जन्मोत्सव एवं विशेष तिथियों पर विशेष राजोपचार पूजन व महाआरती',
+            'समस्त श्रद्धालुओं के सुख, शांति व समृद्धि की पावन प्रार्थना'
+          ]
+        }
+      ],
       stats: [
-        { num: '19+ वर्ष', label: 'श्रीराम जन्मोत्सव परंपरा' },
-        { num: 'धर्म ध्वज', label: 'विशाल शोभायात्रा व संकीर्तन' },
-        { num: 'कांवड़ यात्रा', label: 'श्रावण मास जलाभिषेक' },
-        { num: 'सेवा व संस्कार', label: 'सामाजिक समरसता व सद्भाव' },
+        { num: '2006 से', label: 'अनवरत सेवा संकल्प' },
+        { num: 'धर्म ध्वज', label: 'विशाल शोभायात्रा' },
+        { num: 'रामालय', label: 'केंद्रीय सेवा संकुल' },
+        { num: 'राम दरबार', label: 'अखंड कृपा व संस्कार' },
       ],
       scrollDown: 'नीचे देखें',
     },
@@ -98,13 +163,13 @@ export const content = {
       pastList: [
         {
           id: 'past-1',
-          title: '19वां भव्य श्रीराम जन्मोत्सव एवं धर्म ध्वज यात्रा',
+          title: 'भव्य श्रीराम जन्मोत्सव एवं विशाल धर्म ध्वज यात्रा (2006 से निरंतर)',
           date: '23 मार्च 2024',
           location: 'छत्रसाल चौक से राम मंदिर परिसर, छतरपुर',
           status: 'सफलतापूर्वक संपन्न',
           badge: 'ऐतिहासिक सहभागिता',
-          description: 'भगवान श्रीराम के 19वें जन्मोत्सव की तैयारियों के साथ विशाल धर्म ध्वज यात्रा निकाली गई। हजारों श्रद्धालुओं ने नगर में पुष्पवर्षा कर यात्रा का स्वागत किया।',
-          highlights: ['19वां वर्ष का आयोजन', 'विशाल धर्म ध्वज यात्रा', 'महाप्रसाद भंडारा'],
+          description: 'भगवान श्रीराम के जन्मोत्सव एवं सन् 2006 से प्रारंभ गौरवशाली सेवा परंपरा के अंतर्गत विशाल धर्म ध्वज यात्रा निकाली गई। हजारों श्रद्धालुओं ने नगर में पुष्पवर्षा कर यात्रा का स्वागत किया।',
+          highlights: ['सन् 2006 से अविरल परंपरा', 'विशाल धर्म ध्वज यात्रा', 'महाप्रसाद भंडारा'],
         },
         {
           id: 'past-2',
@@ -118,13 +183,13 @@ export const content = {
         },
         {
           id: 'past-3',
-          title: 'रामनवमी शोभायात्रा एवं धर्म ध्वज स्थापन',
-          date: '14 अप्रैल 2008 (प्रारंभिक सार्वजनिक संदर्भ)',
+          title: 'रामनवमी शोभायात्रा एवं धर्म ध्वज स्थापन (प्रारंभिक सेवा संकल्प)',
+          date: 'सन् २००६ (प्रारंभिक सेवा संदर्भ)',
           location: 'छतरपुर नगर के मुख्य मार्ग',
-          status: 'प्रारंभिक सार्वजनिक संदर्भ',
+          status: 'प्रारंभिक सेवा संदर्भ',
           badge: 'ऐतिहासिक प्रसंग',
-          description: '14 अप्रैल 2008 की समाचार रिपोर्ट में छतरपुर की रामनवमी शोभायात्रा के आयोजक के रूप में श्री राम सेवा समिति का उल्लेख दर्ज है।',
-          highlights: ['नगर शोभायात्रा', 'सनातन जनजागरण', 'समाचार पत्रों में उल्लेख'],
+          description: 'सन् 2006 से छतरपुर की रामनवमी शोभायात्रा एवं धर्म ध्वज स्थापना के पावन आयोजन में श्री राम सेवा समिति का ऐतिहासिक सेवा संदर्भ प्रारंभ हुआ।',
+          highlights: ['नगर शोभायात्रा', 'सनातन जनजागरण', '2006 से अविरल परंपरा'],
         },
         {
           id: 'past-4',
@@ -205,7 +270,7 @@ export const content = {
       alertDesc: 'ये उपलब्ध गतिविधियों के संदर्भ हैं, समिति की कानूनी स्थापना के वर्ष का औपचारिक प्रमाण नहीं। वेबसाइट पर “स्थापना वर्ष २००६” तभी अधिकृत रूप से लिखा जाए जब समिति के मुख्य पदाधिकारी व अभिलेख इसकी पूर्ण पुष्टि करें। समिति की स्थापना की तारीख और उसके धार्मिक एवं सामाजिक कार्यों की जानकारी को पूर्णतः अलग व पारदर्शी रखा गया है ताकि किसी भी प्रकार की भ्रामक जानकारी प्रकाशित न हो।',
       recordsTitle: '५. आधिकारिक रिकॉर्ड के लिए आवश्यक जानकारी',
       recordsSub: 'समिति की स्थापना का सही वर्ष और अधिक विस्तृत इतिहास जुटाने हेतु उपयोगी दस्तावेज',
-      recordsDesc: 'सार्वजनिक वेब खोजों में समिति के गौरवशाली आयोजनों का उल्लेख 2008 से निरंतर मिलता है। समिति के पंजीकरण का आधिकारिक रिकॉर्ड व अधिकृत इतिहास संकलित करने हेतु निम्नलिखित अभिलेख मान्य होंगे:',
+      recordsDesc: 'सार्वजनिक वेब खोजों में समिति के गौरवशाली आयोजनों का उल्लेख सन् 2006 से निरंतर मिलता है। समिति के पंजीकरण का आधिकारिक रिकॉर्ड व अधिकृत इतिहास संकलित करने हेतु निम्नलिखित अभिलेख मान्य होंगे:',
       recordsNotice: 'पारदर्शिता एवं प्रामाणिकता श्री राम सेवा समिति का मूल सिद्धांत है।',
     },
     gallery: {
@@ -295,11 +360,76 @@ export const content = {
       btnEvents: 'Karyakram Dekhein (Past & Upcoming)',
       btnPillars: '4 Mukhya Pillars Dekhein',
       btnVolunteer: 'Volunteer Banein',
+      sinceBadge: 'San 2006 Se Nirantar Sanatan Seva Sankalp • Seva • Sanskar • Samarpan',
+      sinceSubtitle: '2 Dashako se Prabhu Shri Ram ke Janmotsav, Dharma Dhwaj Yatra aur Jan-Kalyan mein samarpit',
+      quickButtonsTitle: 'Samiti Ke Mukhya Pavan Projects & Darshan',
+      quickButtons: [
+        {
+          id: 'dharmadhwaj',
+          title: 'Dharma Dhwaja Yatra',
+          subtitle: 'Grand Saffron Rally & Sankirtan',
+          iconName: 'flag',
+          modalTitle: '|| Bhavya Dharma Dhwaja Yatra ||',
+          tag: 'Chhatarpur City Procession',
+          desc: 'Shri Ram Seva Samiti dwara har saal Shri Ram Janmotsav aur pavitra occasions par Chhatarpur mein grand Dharma Dhwaja Yatra aayojit ki jaati hai. 51 feet unche grand Dharma Dhwaj, decorated rath, saffron flags aur Jai Shri Ram naaro ke sath hazaron ram-bhakt poore shahar mein sankirtan karte hue nikalte hain.',
+          highlights: [
+            '51+ Feet Uncha Dharma Dhwaj aur Bhagwa Vahini',
+            'Chhatrasal Chowk se shuru hokar major city routes par rally',
+            'Local citizens dwara phool barsakar aur aarti se grand welcome',
+            'Yatra ke baad grand Maha Aarti aur Mahaprasad distribution'
+          ]
+        },
+        {
+          id: 'ramalaya',
+          title: 'Ramalaya Karyalaya Ka Shubharambh',
+          subtitle: 'Central Office & Seva Complex',
+          iconName: 'building',
+          modalTitle: '|| "Ramalaya" Central Office Grand Inauguration ||',
+          tag: 'Samiti Main Administrative Hub',
+          desc: 'Shri Ram Seva Samiti ke sabhi dharmik aayojano, samaj seva projects aur cultural activities ko organize karne ke liye central office "Ramalaya" ka shubharambh kiya gaya hai. Ye hub sabhi volunteers ke milne, planning aur public welfare work ka headquarter hai.',
+          highlights: [
+            'Sabhi religious, social aur cultural events ka central operation',
+            'Shri Ram Janmotsav aur upcoming events ki planning & meeting place',
+            'Ram devotees, social workers aur youth ke liye dedicated contact center',
+            'Chhatarpur mein Sanatan service aur sanskar ka inspiring center'
+          ]
+        },
+        {
+          id: 'prabhatpheri',
+          title: 'Prabhat Pheri',
+          subtitle: 'Morning Ramdhun & City Awakening',
+          iconName: 'sun',
+          modalTitle: '|| Sacred Prabhat Pheri & Ram Sankirtan ||',
+          tag: 'Brahmamuhurta Spiritual Awakening',
+          desc: 'Shri Ram Janmotsav aur pavitra tyoharon ke dauraan subah Brahmamuhurta mein shahar mein Prabhat Pheri nikali jaati hai. Dholak, manjeere aur kartal ke sath "Shri Ram Jai Ram Jai Jai Ram" gunjte hue devotees ghar-ghar jaakar devotion aur sanskar ka pavan sandesh dete hain.',
+          highlights: [
+            'Subah 5:00 baje se city ke alag-alag mohallo mein Prabhat Pheri',
+            'Collective Ram Sankirtan, Sundarkand chaupaiya aur bhajans',
+            'Ghar-ghar ke aage rangoli, deepak aur phool barsakar welcome',
+            'Youth aur bachho mein Sanatan values & cultural awareness'
+          ]
+        },
+        {
+          id: 'ramdarbar',
+          title: 'Ram Darbar',
+          subtitle: 'Divine Vigrah & Eternal Blessings',
+          iconName: 'crown',
+          modalTitle: '|| Maryada Purushottam Shri Ram Darbar Darshan ||',
+          tag: 'Divine Darshan & Aarti',
+          desc: 'Prabhu Shri Ram, Mata Janaki, Lakshman Ji aur Sankatmochan Veer Hanuman Ji ka divine Ram Darbar. Samiti ke har karya aur seva ka inspiration Prabhu Shri Ram ka yahi divine swaroop hai. Yahan nitya darshan, pooja aur aarti se poora vatavaran spiritual positive energy se bhar jata hai.',
+          highlights: [
+            'Prabhu Shri Ram, Mata Sita, Lakshman Ji & Hanuman Ji ka grand shringar',
+            'Seva, Sanskar aur Samarpan ke Sanatan ideals ka living symbol',
+            'Janmotsav aur special occasions par grand Rajopchar poojan & Maha Aarti',
+            'Sabhi devotees ke liye peace, prosperity aur well-being ki blessings'
+          ]
+        }
+      ],
       stats: [
-        { num: '19+ Saal', label: 'Shri Ram Janmotsav Tradition' },
-        { num: 'Dharma Dhwaj', label: 'Grand Shobhayatra & Sankirtan' },
-        { num: 'Kanwar Yatra', label: 'Shravan Maas Jalabhishek' },
-        { num: 'Seva & Sanskar', label: 'Social Unity & Community Care' },
+        { num: '2006 Se', label: 'Nirantar Seva Sankalp' },
+        { num: 'Dharma Dhwaj', label: 'Grand Shobhayatra' },
+        { num: 'Ramalaya', label: 'Central Seva Complex' },
+        { num: 'Ram Darbar', label: 'Eternal Blessings' },
       ],
       scrollDown: 'Neeche Dekhein',
     },
@@ -359,13 +489,13 @@ export const content = {
       pastList: [
         {
           id: 'past-1',
-          title: '19va Bhavya Shri Ram Janmotsav & Dharma Dhwaj Yatra',
+          title: 'Bhavya Shri Ram Janmotsav & Grand Dharma Dhwaj Yatra (2006 Se Nirantar)',
           date: '23 March 2024',
           location: 'Chhatrasal Chowk se Ram Mandir Parisar, Chhatarpur',
           status: 'Successfully Completed',
           badge: 'Historic Participation',
-          description: 'Bhagwan Shri Ram ke 19ve Janmotsav ke mauke par grand Dharma Dhwaj Yatra nikali gayi. Hazaron bhakto ne poore shahar mein phool barsakar yatra ka grand swagat kiya.',
-          highlights: ['19th Year Celebration', 'Grand Dharma Dhwaj Yatra', 'Mahaprasad Bhandara'],
+          description: 'Bhagwan Shri Ram ke Janmotsav aur San 2006 se shuru glorious seva tradition ke under grand Dharma Dhwaj Yatra nikali gayi. Hazaron bhakto ne poore shahar mein phool barsakar yatra ka grand swagat kiya.',
+          highlights: ['San 2006 Se Aviral Tradition', 'Grand Dharma Dhwaj Yatra', 'Mahaprasad Bhandara'],
         },
         {
           id: 'past-2',
@@ -379,13 +509,13 @@ export const content = {
         },
         {
           id: 'past-3',
-          title: 'Ram Navami Shobhayatra & Dharma Dhwaj Sthapana',
-          date: '14 April 2008 (Initial Public Reference)',
+          title: 'Ram Navami Shobhayatra & Dharma Dhwaj Sthapana (Initial Seva Sankalp)',
+          date: 'San 2006 (Initial Seva Reference)',
           location: 'Chhatarpur Main Market & Old City',
-          status: 'Historic Public Reference',
+          status: 'Historic Seva Reference',
           badge: 'Historic Record',
-          description: '14 April 2008 ki news report mein Chhatarpur ki Ram Navami Shobhayatra ke organizer ke roop mein Shri Ram Seva Samiti ka official mention darj hai.',
-          highlights: ['Nagar Shobhayatra', 'Sanatan Awareness', 'Newspaper Published Reference'],
+          description: 'San 2006 se Chhatarpur ki Ram Navami Shobhayatra aur Dharma Dhwaj Sthapana ke aayojan mein Shri Ram Seva Samiti ka historic seva reference prarambh hua.',
+          highlights: ['Nagar Shobhayatra', 'Sanatan Awareness', '2006 Se Aviral Tradition'],
         },
         {
           id: 'past-4',
@@ -466,7 +596,7 @@ export const content = {
       alertDesc: 'Ye available news reports aur events ke references hain, samiti ke legal establishment year ka certified proof nahi hain. Website par "Establishment Year 2006" tabhi likhein jab samiti ke official padadhikari isko officially confirm karein. Samiti ki establishment date aur uske dharmik/samajik karyo ki details ko completely separate rakha gaya hai taaki koi galat information publish na ho.',
       recordsTitle: '5. Official Records Ke Liye Kaun-Si Jankari Chahiye?',
       recordsSub: 'Samiti ki exact establishment date aur certified history collect karne ke liye ye documents useful honge',
-      recordsDesc: 'Public web search mein samiti ke programs 2008 se regularly milte hain. Samiti ke legal registration record aur official history ke liye ye 5 documents required hain:',
+      recordsDesc: 'Public web search mein samiti ke programs San 2006 se regularly milte hain. Samiti ke legal registration record aur official history ke liye ye 5 documents required hain:',
       recordsNotice: 'Transparency aur authenticity Shri Ram Seva Samiti ka core rule hai.',
     },
     gallery: {
