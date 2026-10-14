@@ -9,15 +9,12 @@ import {
   Building2,
   Sun,
   Crown,
-  X,
-  CheckCircle2,
-  ChevronRight,
-  MapPin,
-  HeartHandshake
+  ChevronRight
 } from 'lucide-react';
 import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
 import { logoImg, dharmikImg, samajSevaImg, galleryImg, hamseJudeinImg } from '../assets/images';
+import QuickEventModal from './QuickEventModal';
 
 export default function HeroSection({ onOpenVolunteerModal }) {
   const heroRef = useRef(null);
@@ -259,104 +256,13 @@ export default function HeroSection({ onOpenVolunteerModal }) {
           </div>
         </div>
 
-        {/* Sacred Detail Modal Popup */}
-        {selectedItem && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto font-poppins animate-fade-in"
-            onClick={() => setSelectedItem(null)}
-          >
-            <div
-              className="relative max-w-2xl w-full bg-gradient-to-br from-[#280606] via-[#1a0404] to-[#100202] border-2 border-amber-500/60 rounded-3xl p-6 sm:p-8 shadow-[0_0_60px_rgba(245,158,11,0.35)] my-8 text-left max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-red-950/80 hover:bg-red-800 text-amber-300 hover:text-white border border-amber-500/40 transition cursor-pointer z-10"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Modal Top Header */}
-              <div className="text-center mb-6">
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 inline-block mb-2">
-                  {selectedItem.tag || (lang === 'hi' ? 'श्री राम सेवा समिति, छतरपुर' : 'Shri Ram Seva Samiti, Chhatarpur')}
-                </span>
-                <h3 className={`text-2xl sm:text-3xl font-bold gold-gradient-text ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
-                  {selectedItem.modalTitle || selectedItem.title}
-                </h3>
-              </div>
-
-              {/* Photo Banner */}
-              {itemConfig[selectedItem.id]?.img && (
-                <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden border-2 border-amber-500/30 shadow-lg mb-6 group">
-                  <img
-                    src={itemConfig[selectedItem.id].img}
-                    alt={selectedItem.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                    <span className="text-xs sm:text-sm text-amber-200 font-semibold flex items-center gap-1.5">
-                      <Sparkles className="w-4 h-4 text-amber-400" />
-                      <span>{selectedItem.subtitle}</span>
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Detailed Description */}
-              <div className="space-y-4 mb-6">
-                <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed bg-red-950/40 p-4 rounded-xl border border-amber-500/20">
-                  {selectedItem.desc}
-                </p>
-
-                {/* Highlights */}
-                {selectedItem.highlights && (
-                  <div className="space-y-2 pt-2">
-                    <h4 className="text-sm font-bold text-amber-300 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-amber-400" />
-                      <span>{lang === 'hi' ? 'प्रमुख विशेषताएं एवं संकल्प:' : 'Key Highlights & Highlights:'}</span>
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {selectedItem.highlights.map((hl, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-2 p-2.5 rounded-lg bg-stone-950/60 border border-amber-500/15 text-xs sm:text-sm text-amber-100/85"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                          <span>{hl}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Modal Footer Actions */}
-              <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-amber-500/20">
-                <a
-                  href="#events"
-                  onClick={() => setSelectedItem(null)}
-                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-red-950 hover:bg-red-900 border border-amber-500/40 text-amber-200 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Calendar className="w-4 h-4" />
-                  <span>{lang === 'hi' ? 'सभी कार्यक्रम देखें' : 'View All Events'}</span>
-                </a>
-                <button
-                  onClick={() => {
-                    setSelectedItem(null);
-                    onOpenVolunteerModal();
-                  }}
-                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.5)] transition flex items-center gap-1.5 cursor-pointer"
-                >
-                  <HeartHandshake className="w-4 h-4" />
-                  <span>{lang === 'hi' ? 'स्वयंसेवक के रूप में जुड़ें' : 'Join as Volunteer'}</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Dedicated Portal-based Sacred Detail Modal */}
+        <QuickEventModal
+          isOpen={!!selectedItem}
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+          onOpenVolunteerModal={onOpenVolunteerModal}
+        />
 
         {/* Scroll Indicator */}
         <a
