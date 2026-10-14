@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Menu, X, HeartHandshake, MapPin, PhoneCall } from 'lucide-react';
-import AudioChimePlayer from './AudioChimePlayer';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
 import { logoImg } from '../assets/images';
@@ -78,13 +77,10 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
               ))}
             </nav>
 
-            {/* Actions: Language Switcher, Sound & Volunteer Button */}
+            {/* Actions: Language Switcher & Volunteer Button */}
             <div className="hidden sm:flex items-center gap-3">
               {/* Language Switcher */}
               <LanguageSwitcher />
-
-              {/* Sound Player */}
-              <AudioChimePlayer />
 
               {/* Volunteer CTA */}
               <button
@@ -102,7 +98,6 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
             {/* Mobile Menu Actions */}
             <div className="flex items-center gap-2 lg:hidden">
               <LanguageSwitcher />
-              <AudioChimePlayer />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none cursor-pointer"
