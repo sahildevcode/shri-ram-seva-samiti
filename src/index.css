@@ -9,6 +9,23 @@
     --font-cinzel: 'Cinzel', serif;
   }
 
+  html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    html {
+      font-size: 14.5px;
+    }
+  }
+
   body {
     background-color: #120303;
     color: #fff7ed;

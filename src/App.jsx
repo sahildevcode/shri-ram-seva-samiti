@@ -28,7 +28,7 @@ export default function App() {
         <HeaderNavbar onOpenVolunteerModal={() => setIsVolunteerModalOpen(true)} />
 
         {/* Main Content Sections */}
-        <main className="relative z-10 space-y-8 md:space-y-16">
+        <main className="relative z-10 space-y-6 md:space-y-12">
           {/* Hero Section */}
           <HeroSection onOpenVolunteerModal={() => setIsVolunteerModalOpen(true)} />
 
