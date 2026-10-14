@@ -36,30 +36,32 @@ export default function HeaderNavbar({ onOpenVolunteerModal }) {
       {/* Main Glassmorphic Navigation Bar */}
       <div className="backdrop-blur-md bg-[#180404]/90 border-b border-amber-500/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between min-h-[4.75rem] py-2.5 sm:py-3 gap-3">
             {/* Logo and Brand Title */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] transition-all duration-300">
+            <a href="#" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+              <div className="relative shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
                     src={logoImg}
                     alt="Shri Ram Seva Samiti Logo"
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-red-950 rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px] shadow">
+                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-red-950 rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-bold text-[9px] sm:text-[10px] shadow">
                   ॐ
                 </div>
               </div>
 
-              <div className="flex flex-col text-left">
-                <span className={`text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+              <div className="flex flex-col text-left justify-center">
+                <span className={`text-base sm:text-xl lg:text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors whitespace-nowrap leading-snug ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                   {t.nav.brand}
                 </span>
-                <span className="text-[12px] sm:text-xs font-poppins text-amber-400/90 flex items-center gap-1.5">
+                <span className="text-[11px] sm:text-xs font-poppins text-amber-400/90 flex items-center gap-1.5 whitespace-nowrap leading-tight mt-0.5">
                   <span>{t.nav.city}</span>
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                  <span className="text-amber-200/70 hidden sm:inline">{t.nav.motto}</span>
+                  <span className="hidden md:inline-flex items-center gap-1.5 text-amber-200/70">
+                    <span className="inline-block w-1 h-1 rounded-full bg-amber-500"></span>
+                    <span>{t.nav.motto}</span>
+                  </span>
                 </span>
               </div>
             </a>
