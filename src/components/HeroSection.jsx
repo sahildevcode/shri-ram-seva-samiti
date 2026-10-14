@@ -32,25 +32,25 @@ export default function HeroSection({ onOpenVolunteerModal }) {
       icon: Flag,
       img: galleryImg,
       color: 'from-amber-500 to-red-600',
-      badge: lang === 'hi' ? '१. मुख्य शोभायात्रा' : '1. Main Shobhayatra',
+      badge: lang === 'hi' ? 'मुख्य शोभायात्रा' : 'Main Shobhayatra',
     },
     ramalaya: {
       icon: Building2,
       img: hamseJudeinImg,
       color: 'from-orange-500 to-amber-600',
-      badge: lang === 'hi' ? '२. केंद्रीय संकुल' : '2. Central Office',
+      badge: lang === 'hi' ? 'केंद्रीय संकुल' : 'Central Office',
     },
     prabhatpheri: {
       icon: Sun,
       img: dharmikImg,
       color: 'from-amber-400 to-yellow-600',
-      badge: lang === 'hi' ? '३. प्रातः जागरण' : '3. Morning Awakening',
+      badge: lang === 'hi' ? 'प्रातः जागरण' : 'Morning Awakening',
     },
     ramdarbar: {
       icon: Crown,
       img: logoImg,
       color: 'from-red-600 to-amber-500',
-      badge: lang === 'hi' ? '४. दिव्य दर्शन' : '4. Divine Darshan',
+      badge: lang === 'hi' ? 'दिव्य दर्शन' : 'Divine Darshan',
     },
   };
 

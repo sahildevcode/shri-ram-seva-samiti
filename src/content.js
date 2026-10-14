@@ -109,8 +109,8 @@ export const content = {
     },
     pillars: {
       badge: 'वेबसाइट के लिए उपयोगी मुख्य स्तंभ',
-      title: '४. वेबसाइट के लिए अन्य उपयोगी सेक्शन',
-      desc: 'समिति की गतिविधियों, जनसेवा और सांस्कृतिक चेतना को सुगमता से प्रस्तुत करने वाले चार आधारभूत स्तंभ',
+      title: 'वेबसाइट के लिए अन्य उपयोगी सेक्शन',
+      desc: 'समिति की गतिविधियों, जनसेवा और सांस्कृतिक चेतना को सुगमता से प्रस्तुत करने वाले आधारभूत स्तंभ',
       items: [
         {
           id: 'dharmik-aayojan',
@@ -264,11 +264,11 @@ export const content = {
     },
     timeline: {
       badge: 'इतिहास एवं सार्वजनिक गतिविधियों के संदर्भ',
-      title: '३. वेबसाइट पर इतिहास व गतिविधि संदर्भ',
+      title: 'वेबसाइट पर इतिहास व गतिविधि संदर्भ',
       desc: 'उपलब्ध समाचार संदर्भों के अनुसार समिति के आयोजनों का कालक्रम (गतिविधि संदर्भ)',
       alertTitle: 'महत्त्वपूर्ण पारदर्शी सूचना (तथ्यपरक स्पष्टीकरण):',
       alertDesc: 'ये उपलब्ध गतिविधियों के संदर्भ हैं, समिति की कानूनी स्थापना के वर्ष का औपचारिक प्रमाण नहीं। वेबसाइट पर “स्थापना वर्ष २००६” तभी अधिकृत रूप से लिखा जाए जब समिति के मुख्य पदाधिकारी व अभिलेख इसकी पूर्ण पुष्टि करें। समिति की स्थापना की तारीख और उसके धार्मिक एवं सामाजिक कार्यों की जानकारी को पूर्णतः अलग व पारदर्शी रखा गया है ताकि किसी भी प्रकार की भ्रामक जानकारी प्रकाशित न हो।',
-      recordsTitle: '५. आधिकारिक रिकॉर्ड के लिए आवश्यक जानकारी',
+      recordsTitle: 'आधिकारिक रिकॉर्ड के लिए आवश्यक जानकारी',
       recordsSub: 'समिति की स्थापना का सही वर्ष और अधिक विस्तृत इतिहास जुटाने हेतु उपयोगी दस्तावेज',
       recordsDesc: 'सार्वजनिक वेब खोजों में समिति के गौरवशाली आयोजनों का उल्लेख सन् 2006 से निरंतर मिलता है। समिति के पंजीकरण का आधिकारिक रिकॉर्ड व अधिकृत इतिहास संकलित करने हेतु निम्नलिखित अभिलेख मान्य होंगे:',
       recordsNotice: 'पारदर्शिता एवं प्रामाणिकता श्री राम सेवा समिति का मूल सिद्धांत है।',
@@ -435,7 +435,7 @@ export const content = {
     },
     pillars: {
       badge: 'Website Ke Liye Mukhya Pillars',
-      title: '4. Website Ke Liye Anya Upyogi Section',
+      title: 'Website Ke Liye Anya Upyogi Section',
       desc: 'Samiti ki activities, public service aur cultural work ko represent karne wale 4 main pillars',
       items: [
         {
@@ -590,11 +590,11 @@ export const content = {
     },
     timeline: {
       badge: 'Itihas & Public Activity References',
-      title: '3. Website Par Itihas & Timeline',
+      title: 'Website Par Itihas & Timeline',
       desc: 'Available news reports ke anusar samiti ke events ka chronological timeline',
       alertTitle: 'Important Notice (Transparency & Verification):',
       alertDesc: 'Ye available news reports aur events ke references hain, samiti ke legal establishment year ka certified proof nahi hain. Website par "Establishment Year 2006" tabhi likhein jab samiti ke official padadhikari isko officially confirm karein. Samiti ki establishment date aur uske dharmik/samajik karyo ki details ko completely separate rakha gaya hai taaki koi galat information publish na ho.',
-      recordsTitle: '5. Official Records Ke Liye Kaun-Si Jankari Chahiye?',
+      recordsTitle: 'Official Records Ke Liye Kaun-Si Jankari Chahiye?',
       recordsSub: 'Samiti ki exact establishment date aur certified history collect karne ke liye ye documents useful honge',
       recordsDesc: 'Public web search mein samiti ke programs San 2006 se regularly milte hain. Samiti ke legal registration record aur official history ke liye ye 5 documents required hain:',
       recordsNotice: 'Transparency aur authenticity Shri Ram Seva Samiti ka core rule hai.',
