@@ -46,6 +46,7 @@ export default function HeaderNavbar({
                     src={logoImg}
                     alt="Shri Ram Seva Samiti Logo"
                     className="w-full h-full object-cover rounded-full"
+                    decoding="async"
                   />
                 </div>
                 <div className="absolute -bottom-1 -right-1 bg-amber-500 text-red-950 rounded-full w-3.5 h-3.5 sm:w-4 sm:h-4 flex items-center justify-center font-bold text-[8px] sm:text-[9px] shadow">

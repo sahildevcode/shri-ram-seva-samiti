@@ -25,6 +25,8 @@ export default function FooterSection({ onOpenVolunteerModal }) {
                   src={logoImg}
                   alt="Shri Ram Seva Samiti Logo"
                   className="w-full h-full object-cover rounded-full"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div>

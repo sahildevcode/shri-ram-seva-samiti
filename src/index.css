@@ -190,20 +190,46 @@
   animation: divineWalk 4s ease-in-out infinite;
 }
 
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 @keyframes trackingShot {
   0% {
-    transform: scale(1.08) translateX(-3%);
+    transform: translate3d(-2%, 0, 0) scale(1.04);
   }
   50% {
-    transform: scale(1.08) translateX(3%);
+    transform: translate3d(2%, 0, 0) scale(1.04);
   }
   100% {
-    transform: scale(1.08) translateX(-3%);
+    transform: translate3d(-2%, 0, 0) scale(1.04);
   }
 }
 
 .animate-tracking-shot {
   animation: trackingShot 14s ease-in-out infinite;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Mobile Smoothness Optimizations */
+@media (max-width: 768px) {
+  .animate-tracking-shot {
+    animation-duration: 20s; /* gentler for mobile GPU */
+  }
+  
+  /* Disable heavy backdrop blurs on small devices to prevent GPU compositing lag */
+  .backdrop-blur-md,
+  .backdrop-blur {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
 }
 
 

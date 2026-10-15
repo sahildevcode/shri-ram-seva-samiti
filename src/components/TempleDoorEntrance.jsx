@@ -7,7 +7,7 @@ export default function TempleDoorEntrance({ isOpen = true, onClose, autoCloseDe
   const [showDarshan, setShowDarshan] = useState(false);
   const [visible, setVisible] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
-  const [useVideo, setUseVideo] = useState(true);
+  const [useVideo, setUseVideo] = useState(false); // Default to false: prevents 404 video error and mid-animation re-render lag
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function TempleDoorEntrance({ isOpen = true, onClose, autoCloseDe
     // Step 2: Ram Mandir visual shines through as doors part
     const darshanTimer = setTimeout(() => {
       setShowDarshan(true);
-      if (videoRef.current) {
+      if (useVideo && videoRef.current) {
         videoRef.current.currentTime = 0;
         videoRef.current.play().catch(() => {});
       }
@@ -144,19 +144,13 @@ export default function TempleDoorEntrance({ isOpen = true, onClose, autoCloseDe
                 ? 'opacity-100 brightness-105 contrast-105 animate-tracking-shot' 
                 : 'opacity-0 brightness-75 scale-95'
             }`}
-            style={{ willChange: 'transform, opacity' }}
+            decoding="async"
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
           />
         )}
 
         {/* Soft Golden Sunrise Mist & Light Overlay */}
         <div className={`absolute inset-0 bg-gradient-to-t from-[#100202] via-transparent to-amber-500/20 pointer-events-none transition-opacity duration-[2000ms] ease-out ${showDarshan ? 'opacity-100' : 'opacity-0'}`}></div>
-
-        {/* Floating Sacred Golden & Orange Petals */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-amber-400/90 blur-[0.5px] animate-ping" style={{ animationDuration: '3s' }}></div>
-          <div className="absolute top-1/3 right-1/4 w-2.5 h-2.5 rounded-full bg-orange-400/90 blur-[0.5px] animate-ping" style={{ animationDuration: '4s' }}></div>
-          <div className="absolute bottom-1/3 left-1/3 w-3.5 h-3.5 rounded-full bg-yellow-300/80 animate-bounce" style={{ animationDuration: '5s' }}></div>
-        </div>
       </div>
 
       {/* --- LAYER 1C: Bottom Full-Width Divine Greeting Banner --- */}
@@ -177,11 +171,12 @@ export default function TempleDoorEntrance({ isOpen = true, onClose, autoCloseDe
           className="relative w-1/2 h-full bg-gradient-to-r from-[#240505] via-[#380707] to-[#1e0303] border-r-4 border-amber-400/80 shadow-[15px_0_40px_rgba(0,0,0,0.9)] overflow-hidden"
           style={{
             transformOrigin: 'left center',
-            transform: doorsOpen ? 'rotateY(-95deg)' : 'rotateY(0deg)',
+            transform: doorsOpen ? 'translateZ(0) rotateY(-95deg)' : 'translateZ(0) rotateY(0deg)',
             transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)',
             willChange: 'transform',
             transformStyle: 'preserve-3d',
             backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
           {/* Ornate Gold Woodwork Panels */}
@@ -230,11 +225,12 @@ export default function TempleDoorEntrance({ isOpen = true, onClose, autoCloseDe
           className="relative w-1/2 h-full bg-gradient-to-l from-[#240505] via-[#380707] to-[#1e0303] border-l-4 border-amber-400/80 shadow-[-15px_0_40px_rgba(0,0,0,0.9)] overflow-hidden"
           style={{
             transformOrigin: 'right center',
-            transform: doorsOpen ? 'rotateY(95deg)' : 'rotateY(0deg)',
+            transform: doorsOpen ? 'translateZ(0) rotateY(95deg)' : 'translateZ(0) rotateY(0deg)',
             transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)',
             willChange: 'transform',
             transformStyle: 'preserve-3d',
             backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
           {/* Ornate Gold Woodwork Panels */}

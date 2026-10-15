@@ -3,15 +3,22 @@ import { useLanguage } from '../context/LanguageContext';
 
 export default function FloatingWatermarks() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(false);
   const { lang } = useLanguage();
 
   useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) {
+      setIsDesktop(false);
+      return;
+    }
+    setIsDesktop(true);
+
     let ticking = false;
     const handleMouseMove = (e) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const x = (e.clientX / window.innerWidth - 0.5) * 40;
-          const y = (e.clientY / window.innerHeight - 0.5) * 40;
+          const x = (e.clientX / window.innerWidth - 0.5) * 25;
+          const y = (e.clientY / window.innerHeight - 0.5) * 25;
           setOffset({ x, y });
           ticking = false;
         });
@@ -19,16 +26,19 @@ export default function FloatingWatermarks() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // Completely omit from DOM on mobile to save GPU fill rate & battery
+  if (!isDesktop) return null;
 
   const isHindi = lang === 'hi';
 
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none overflow-hidden z-0 select-none opacity-40 font-cinzel"
+      className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden z-0 select-none opacity-30 font-cinzel"
     >
       {/* Giant primary floating name */}
       <div
@@ -37,7 +47,6 @@ export default function FloatingWatermarks() {
           transform: `translate3d(${-offset.x * 1.2}px, ${-offset.y * 1.2}px, 0) rotate(-6deg)`,
           color: 'transparent',
           WebkitTextStroke: '1px rgba(245, 158, 11, 0.12)',
-          textShadow: '0 0 40px rgba(239, 68, 68, 0.08)'
         }}
       >
         {isHindi ? 'श्री राम सेवा समिति • छतरपुर' : 'SHRI RAM SEVA SAMITI • CHHATARPUR'}
@@ -50,7 +59,6 @@ export default function FloatingWatermarks() {
           transform: `translate3d(${offset.x * 0.9}px, ${offset.y * 0.9}px, 0) rotate(4deg)`,
           color: 'transparent',
           WebkitTextStroke: '1px rgba(239, 68, 68, 0.1)',
-          textShadow: '0 0 35px rgba(245, 158, 11, 0.06)'
         }}
       >
         {isHindi ? 'सेवा • संस्कार • समर्पण' : 'SEVA • SANSKAR • SAMARPAN'}
@@ -62,7 +70,7 @@ export default function FloatingWatermarks() {
         style={{
           transform: `translate3d(${-offset.x * 0.8}px, ${-offset.y * 0.8}px, 0) rotate(-3deg)`,
           color: 'transparent',
-          WebkitTextStroke: '1px rgba(251, 191, 36, 0.09)'
+          WebkitTextStroke: '1px rgba(251, 191, 36, 0.09)',
         }}
       >
         {isHindi ? 'जय श्री राम • धर्म ध्वज यात्रा' : 'JAI SHRI RAM • DHARMA DHWAJ YATRA'}
@@ -74,7 +82,7 @@ export default function FloatingWatermarks() {
         style={{
           transform: `translate3d(${offset.x * 1.1}px, ${offset.y * 1.1}px, 0) rotate(2deg)`,
           color: 'transparent',
-          WebkitTextStroke: '1px rgba(239, 68, 68, 0.08)'
+          WebkitTextStroke: '1px rgba(239, 68, 68, 0.08)',
         }}
       >
         {isHindi ? 'सनातन संस्कृति • सामाजिक सेवा' : 'SANATAN SANSKRITI • SAMAJ SEVA'}

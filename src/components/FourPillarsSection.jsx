@@ -97,6 +97,7 @@ export default function FourPillarsSection({ onOpenVolunteerModal }) {
                   alt={pillar.title}
                   className="w-full h-full object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-110 filter brightness-95 group-hover:brightness-105"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-2 right-2 bg-red-950/80 backdrop-blur-xs text-amber-300 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-500/40">
                   {idx + 1}

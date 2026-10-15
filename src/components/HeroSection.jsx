@@ -69,8 +69,8 @@ export default function HeroSection({ onOpenVolunteerModal, onOpenDharmaDhwaj, o
       if (aiAnimRef.current) {
         tl.fromTo(
           aiAnimRef.current,
-          { opacity: 0, y: 30, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 1 }
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.8 }
         );
       }
 

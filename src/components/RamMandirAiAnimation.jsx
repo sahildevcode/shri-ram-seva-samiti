@@ -24,7 +24,6 @@ export default function RamMandirAiAnimation({
   const { lang, t } = useLanguage();
   const [activeStage, setActiveStage] = useState(0); // 0: Ram Mandir, 1: 2006 History, 2: Seva Sankalp
   const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
   const [hasHeroVideo, setHasHeroVideo] = useState(true);
 
   const stages = [
@@ -75,30 +74,21 @@ export default function RamMandirAiAnimation({
     },
   ];
 
-  // 3 second stage loop for snappy AI animation
-  const STAGE_DURATION = 3000; // ms
-  const TICK_INTERVAL = 50; // ms
+  // 3.5 second stage loop for snappy AI animation without 50ms React render lag
+  const STAGE_DURATION = 3500; // ms
 
   useEffect(() => {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        const next = prev + (TICK_INTERVAL / STAGE_DURATION) * 100;
-        if (next >= 100) {
-          setActiveStage((current) => (current + 1) % stages.length);
-          return 0;
-        }
-        return next;
-      });
-    }, TICK_INTERVAL);
+      setActiveStage((current) => (current + 1) % stages.length);
+    }, STAGE_DURATION);
 
     return () => clearInterval(interval);
   }, [isPlaying, stages.length]);
 
   const selectStage = (index) => {
     setActiveStage(index);
-    setProgress(0);
   };
 
   const current = stages[activeStage];
@@ -130,7 +120,10 @@ export default function RamMandirAiAnimation({
             src={ramWalkingSideProfileImg}
             alt="Lord Ram Walking Side Profile - Ayodhya Ram Mandir"
             className="w-full h-full object-cover filter brightness-[0.95] contrast-105 animate-tracking-shot"
-            style={{ willChange: 'transform' }}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           />
         )}
 
@@ -214,11 +207,16 @@ export default function RamMandirAiAnimation({
           </div>
         </div>
 
-        {/* Dynamic Progress Line */}
+        {/* Dynamic Progress Line (Pure GPU CSS, zero React state overhead) */}
         <div className="w-48 sm:w-64 h-1.5 mx-auto rounded-full bg-stone-900 border border-amber-500/30 overflow-hidden mb-6">
           <div
-            className="h-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 transition-all ease-linear shadow-[0_0_10px_#f59e0b]"
-            style={{ width: `${progress}%` }}
+            key={`${activeStage}-${isPlaying}`}
+            className="h-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 shadow-[0_0_10px_#f59e0b]"
+            style={{
+              animation: isPlaying ? `progressFill ${STAGE_DURATION}ms linear forwards` : 'none',
+              width: isPlaying ? undefined : '100%',
+              willChange: 'width',
+            }}
           ></div>
         </div>
 

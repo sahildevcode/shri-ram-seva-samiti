@@ -216,6 +216,7 @@ export default function GallerySection() {
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 filter brightness-95 group-hover:brightness-105"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#150202] via-transparent to-black/20 opacity-80 group-hover:opacity-60 transition-opacity"></div>
 
