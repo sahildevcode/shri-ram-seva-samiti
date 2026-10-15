@@ -66,20 +66,11 @@ export default function HeroSection({ onOpenVolunteerModal, onOpenDharmaDhwaj, o
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      if (aiAnimRef.current) {
-        tl.fromTo(
-          aiAnimRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.8 }
-        );
-      }
-
       if (statsRef.current && statsRef.current.children) {
         tl.fromTo(
           statsRef.current.children,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 },
-          '-=0.4'
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }
         );
       }
     }, heroRef);

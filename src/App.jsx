@@ -77,7 +77,6 @@ function MainLayout() {
       <TempleDoorEntrance
         isOpen={isDoorIntroOpen}
         onClose={() => setIsDoorIntroOpen(false)}
-        autoCloseDelay={1400}
       />
 
       {/* 4. Sticky Header with Language Switcher & Door Darshan Trigger */}
