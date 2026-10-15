@@ -137,3 +137,73 @@
 .animate-drift {
   animation: gentleDrift 16s ease-in-out infinite;
 }
+
+@keyframes scanline {
+  0% {
+    top: 0%;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.2;
+  }
+}
+
+.animate-scanline {
+  animation: scanline 2.8s ease-in-out infinite;
+}
+
+@keyframes fadeInFast {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInFast 0.6s ease-out forwards;
+}
+
+@keyframes divineWalk {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(0.4deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-0.4deg);
+  }
+}
+
+.animate-divineWalk {
+  animation: divineWalk 4s ease-in-out infinite;
+}
+
+@keyframes trackingShot {
+  0% {
+    transform: scale(1.08) translateX(-3%);
+  }
+  50% {
+    transform: scale(1.08) translateX(3%);
+  }
+  100% {
+    transform: scale(1.08) translateX(-3%);
+  }
+}
+
+.animate-tracking-shot {
+  animation: trackingShot 14s ease-in-out infinite;
+}
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   X, 
@@ -10,13 +10,16 @@ import {
   Building2, 
   Sun, 
   Crown,
-  MapPin
+  MapPin,
+  Bell,
+  RotateCcw
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { logoImg, dharmikImg, galleryImg, hamseJudeinImg } from '../assets/images';
+import { logoImg, dharmikImg, galleryImg, hamseJudeinImg, ramMandirImg } from '../assets/images';
 
 export default function QuickEventModal({ isOpen, item, onClose, onOpenVolunteerModal }) {
   const { lang } = useLanguage();
+  const [doorsOpen, setDoorsOpen] = useState(false);
 
   const itemConfig = {
     dharmadhwaj: {
@@ -44,6 +47,19 @@ export default function QuickEventModal({ isOpen, item, onClose, onOpenVolunteer
       badge: lang === 'hi' ? 'दिव्य दर्शन' : 'Divine Darshan',
     },
   };
+
+  // Trigger Temple Door opening animation when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setDoorsOpen(false);
+      const timer = setTimeout(() => {
+        setDoorsOpen(true);
+      }, 350);
+      return () => clearTimeout(timer);
+    } else {
+      setDoorsOpen(false);
+    }
+  }, [isOpen]);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -120,22 +136,64 @@ export default function QuickEventModal({ isOpen, item, onClose, onOpenVolunteer
             </span>
           </div>
 
-          {/* Photo Banner */}
-          {cfg.img && (
-            <div className="relative w-full h-44 sm:h-56 rounded-xl overflow-hidden border border-amber-500/30 shadow-md">
-              <img
-                src={cfg.img}
-                alt={item.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3 sm:p-4">
-                <span className="text-xs sm:text-sm text-amber-200 font-semibold drop-shadow flex items-center gap-1.5">
+          {/* Sacred Photo Banner with 3D Temple Doors Opening Animation */}
+          <div className="relative w-full h-48 sm:h-60 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl bg-[#1b0303] group">
+            <img
+              src={cfg.img || ramMandirImg}
+              alt={item.title}
+              className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-3.5 sm:p-4 z-10 pointer-events-none">
+              <div className="flex items-center justify-between w-full pointer-events-auto">
+                <span className="text-xs sm:text-sm text-amber-200 font-bold drop-shadow flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-amber-400" />
                   <span>{item.subtitle}</span>
                 </span>
+                <button
+                  onClick={() => {
+                    setDoorsOpen(false);
+                    setTimeout(() => setDoorsOpen(true), 300);
+                  }}
+                  className="px-2 py-0.5 rounded-full bg-red-950/80 hover:bg-red-900 border border-amber-400/50 text-[10px] text-amber-300 font-semibold flex items-center gap-1 transition cursor-pointer"
+                  title="कपाट पुनः खोलें"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span>कपाट दर्शन</span>
+                </button>
               </div>
             </div>
-          )}
+
+            {/* Two Ornate Golden Temple Doors Swinging Open */}
+            <div className="absolute inset-0 pointer-events-none flex z-20" style={{ perspective: '900px' }}>
+              {/* Left Door */}
+              <div
+                className="w-1/2 h-full bg-gradient-to-r from-[#2a0606] via-[#3a0808] to-[#200404] border-r-2 border-amber-400/80 shadow-2xl transition-transform duration-700 ease-in-out flex flex-col items-center justify-center relative overflow-hidden"
+                style={{
+                  transformOrigin: 'left center',
+                  transform: doorsOpen ? 'rotateY(-94deg)' : 'rotateY(0deg)',
+                }}
+              >
+                <div className="border border-amber-400/40 rounded-xl p-3 flex flex-col items-center justify-center bg-amber-500/10">
+                  <Bell className="w-5 h-5 text-amber-400 mb-1" />
+                  <span className="text-2xl font-bold gold-gradient-text select-none">卐</span>
+                </div>
+              </div>
+
+              {/* Right Door */}
+              <div
+                className="w-1/2 h-full bg-gradient-to-l from-[#2a0606] via-[#3a0808] to-[#200404] border-l-2 border-amber-400/80 shadow-2xl transition-transform duration-700 ease-in-out flex flex-col items-center justify-center relative overflow-hidden"
+                style={{
+                  transformOrigin: 'right center',
+                  transform: doorsOpen ? 'rotateY(94deg)' : 'rotateY(0deg)',
+                }}
+              >
+                <div className="border border-amber-400/40 rounded-xl p-3 flex flex-col items-center justify-center bg-amber-500/10">
+                  <Bell className="w-5 h-5 text-amber-400 mb-1" />
+                  <span className="text-2xl font-bold gold-gradient-text select-none">ॐ</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Detailed Description */}
           <div className="bg-red-950/40 p-4 rounded-xl border border-amber-500/20">

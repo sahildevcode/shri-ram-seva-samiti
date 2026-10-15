@@ -15,13 +15,11 @@ import gsap from 'gsap';
 import { useLanguage } from '../context/LanguageContext';
 import { logoImg, dharmikImg, samajSevaImg, galleryImg, hamseJudeinImg } from '../assets/images';
 import QuickEventModal from './QuickEventModal';
+import RamMandirAiAnimation from './RamMandirAiAnimation';
 
-export default function HeroSection({ onOpenVolunteerModal }) {
+export default function HeroSection({ onOpenVolunteerModal, onOpenDharmaDhwaj, onSelectQuickEvent, onOpenDoorAnimation }) {
   const heroRef = useRef(null);
-  const logoRef = useRef(null);
-  const badgeRef = useRef(null);
-  const titleRef = useRef(null);
-  const mottoRef = useRef(null);
+  const aiAnimRef = useRef(null);
   const statsRef = useRef(null);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -68,35 +66,22 @@ export default function HeroSection({ onOpenVolunteerModal }) {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.8 }
-      )
-      .fromTo(
-        logoRef.current,
-        { opacity: 0, scale: 0.8, rotate: -5 },
-        { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'back.out(1.5)' },
-        '-=0.4'
-      )
-      .fromTo(
-        titleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.9 },
-        '-=0.7'
-      )
-      .fromTo(
-        mottoRef.current,
-        { opacity: 0, scale: 0.95 },
-        { opacity: 1, scale: 1, duration: 0.8 },
-        '-=0.5'
-      )
-      .fromTo(
-        statsRef.current ? statsRef.current.children : [],
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.15 },
-        '-=0.4'
-      );
+      if (aiAnimRef.current) {
+        tl.fromTo(
+          aiAnimRef.current,
+          { opacity: 0, y: 30, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 1 }
+        );
+      }
+
+      if (statsRef.current && statsRef.current.children) {
+        tl.fromTo(
+          statsRef.current.children,
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 },
+          '-=0.4'
+        );
+      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -105,95 +90,25 @@ export default function HeroSection({ onOpenVolunteerModal }) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[80vh] flex flex-col items-center justify-center pt-4 pb-8 sm:pt-6 sm:pb-12 px-4 sm:px-6 lg:px-8 text-center overflow-hidden font-poppins"
+      className="relative w-full flex flex-col items-center justify-start text-center overflow-hidden font-poppins pt-0 pb-12"
     >
       {/* Radiant golden backdrop glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-red-600/15 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[320px] h-[320px] bg-amber-500/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-amber-500/15 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-        {/* Sacred Badge */}
-        <div
-          ref={badgeRef}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1 rounded-full bg-red-950/70 border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-medium tracking-wider shadow-[0_0_15px_rgba(245,158,11,0.2)] mb-4"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '6s' }} />
-          <span>{t.hero.badge}</span>
-        </div>
+      {/* 100% Full Width & Height Sacred AI-style Ram Mandir & History Animation Showcase */}
+      <div ref={aiAnimRef} className="w-full">
+        <RamMandirAiAnimation 
+          onOpenDoorAnimation={onOpenDoorAnimation}
+          onOpenDharmaDhwaj={onOpenDharmaDhwaj}
+          onOpenVolunteerModal={onOpenVolunteerModal}
+        />
+      </div>
 
-        {/* Grand 3D Glowing Circular Logo */}
-        <div
-          ref={logoRef}
-          className="relative group mb-4 cursor-pointer"
-        >
-          {/* Animated Halo Rings */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-amber-500 via-red-600 to-amber-400 rounded-full blur-lg opacity-60 group-hover:opacity-90 transition duration-700 animate-pulse-glow"></div>
-          <div className="absolute -inset-1 rounded-full border border-amber-400/50 animate-spin" style={{ animationDuration: '24s' }}></div>
-
-          <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full p-1.5 bg-gradient-to-b from-amber-400 via-amber-700 to-red-950 shadow-[0_8px_30px_rgba(0,0,0,0.8)] transform transition-transform duration-500 group-hover:scale-105">
-            <img
-              src={logoImg}
-              alt="Shri Ram Seva Samiti Logo"
-              className="w-full h-full object-cover rounded-full shadow-inner"
-            />
-          </div>
-        </div>
-
-        {/* Title */}
-        <div ref={titleRef} className="space-y-2 max-w-4xl">
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
-            <span className="gold-gradient-text block mb-0.5">{t.hero.title}</span>
-            <span className="text-base sm:text-lg md:text-xl text-amber-200/90 block font-normal">
-              {t.hero.city}
-            </span>
-          </h1>
-
-          {/* Slogan Pill */}
-          <div
-            ref={mottoRef}
-            className={`flex items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm md:text-base font-bold saffron-gradient-text py-1 ${lang === 'hi' ? 'font-yatra' : ''}`}
-          >
-            <span>{t.hero.mottoLeft}</span>
-            <span className="text-amber-500/60">•</span>
-            <span>{t.hero.mottoMid}</span>
-            <span className="text-amber-500/60">•</span>
-            <span>{t.hero.mottoRight}</span>
-          </div>
-
-          <p className="text-xs sm:text-sm md:text-base text-amber-100/80 max-w-2xl mx-auto leading-relaxed pt-1">
-            {t.hero.desc}
-          </p>
-        </div>
-
-        {/* Call to Actions */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mt-5">
-          <a
-            href="#events"
-            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-1.5 cursor-pointer"
-          >
-            <Calendar className="w-4 h-4" />
-            <span>{t.hero.btnEvents}</span>
-          </a>
-
-          <a
-            href="#pillars"
-            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-red-950/70 hover:bg-red-900 border border-amber-500/40 text-amber-200 hover:text-white transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-1.5 shadow cursor-pointer"
-          >
-            <Award className="w-4 h-4 text-amber-400" />
-            <span>{t.hero.btnPillars}</span>
-          </a>
-
-          <button
-            onClick={onOpenVolunteerModal}
-            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm bg-transparent hover:bg-amber-500/10 border border-amber-400/50 text-amber-300 hover:text-amber-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-1.5 cursor-pointer"
-          >
-            <Users className="w-4 h-4 text-amber-400" />
-            <span>{t.hero.btnVolunteer}</span>
-          </button>
-        </div>
-
+      {/* Lower Section: Prestigious Since 2006 Seva Sankalp Ribbon & 4 Quick Darshan Buttons */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-10 flex flex-col items-center">
         {/* Prestigious Since 2006 Seva Sankalp Ribbon */}
-        <div className="w-full max-w-5xl mt-8 pt-6 border-t border-amber-500/20 flex flex-col items-center">
+        <div className="w-full pt-4 border-t border-amber-500/20 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-red-950 via-[#350707] to-red-950 border border-amber-400/50 shadow-[0_0_20px_rgba(245,158,11,0.25)] text-amber-200 text-xs sm:text-sm font-semibold tracking-wide mb-2 animate-pulse">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span className="gold-gradient-text font-bold tracking-wide">
@@ -217,7 +132,13 @@ export default function HeroSection({ onOpenVolunteerModal }) {
               return (
                 <button
                   key={btn.id}
-                  onClick={() => setSelectedItem(btn)}
+                  onClick={() => {
+                    if (onSelectQuickEvent) {
+                      onSelectQuickEvent(btn);
+                    } else {
+                      setSelectedItem(btn);
+                    }
+                  }}
                   className="group relative flex flex-col items-center justify-between p-3.5 sm:p-4 rounded-xl bg-gradient-to-b from-[#2b0707] via-[#1a0404] to-[#100202] border border-amber-500/35 hover:border-amber-400 shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer text-center overflow-hidden"
                 >
                   {/* Subtle top golden light line */}
@@ -256,13 +177,15 @@ export default function HeroSection({ onOpenVolunteerModal }) {
           </div>
         </div>
 
-        {/* Dedicated Portal-based Sacred Detail Modal */}
-        <QuickEventModal
-          isOpen={!!selectedItem}
-          item={selectedItem}
-          onClose={() => setSelectedItem(null)}
-          onOpenVolunteerModal={onOpenVolunteerModal}
-        />
+        {/* Dedicated Portal-based Sacred Detail Modal (Fallback if not handled by root App) */}
+        {!onSelectQuickEvent && (
+          <QuickEventModal
+            isOpen={!!selectedItem}
+            item={selectedItem}
+            onClose={() => setSelectedItem(null)}
+            onOpenVolunteerModal={onOpenVolunteerModal}
+          />
+        )}
 
         {/* Scroll Indicator */}
         <a
