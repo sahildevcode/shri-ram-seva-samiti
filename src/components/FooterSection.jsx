@@ -1,9 +1,9 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Sparkles, Flame } from 'lucide-react';
+import { MapPin, Phone, Mail, Sparkles, Flame, QrCode, HeartHandshake } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { logoImg } from '../assets/images';
 
-export default function FooterSection({ onOpenVolunteerModal }) {
+export default function FooterSection({ onOpenVolunteerModal, onOpenDonationModal }) {
   const { t, lang } = useLanguage();
 
   return (
@@ -114,13 +114,26 @@ export default function FooterSection({ onOpenVolunteerModal }) {
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
               <button
+                type="button"
                 onClick={onOpenVolunteerModal}
-                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow transition transform hover:-translate-y-0.5 cursor-pointer"
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow transition transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-1.5"
               >
-                {t.footer.volunteerBtn}
+                <HeartHandshake className="w-3.5 h-3.5" />
+                <span>{t.footer.volunteerBtn}</span>
               </button>
+
+              {onOpenDonationModal && (
+                <button
+                  type="button"
+                  onClick={onOpenDonationModal}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-red-950/80 hover:bg-red-900 border border-amber-500/50 hover:border-amber-400 text-amber-200 hover:text-white shadow transition cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <QrCode className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{lang === 'hi' ? '🚩 दान एवं सहयोग करें (Demo QR)' : '🚩 Donate & Contribute (Demo QR)'}</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

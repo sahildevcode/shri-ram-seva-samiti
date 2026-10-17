@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
-import { Menu, X, HeartHandshake, MapPin, PhoneCall, Layers, Flag } from 'lucide-react';
+import { 
+  Menu, 
+  X, 
+  HeartHandshake, 
+  QrCode, 
+  ChevronDown, 
+  Flag, 
+  Layers, 
+  Calendar, 
+  Building2, 
+  Info, 
+  Flame, 
+  Users, 
+  Image as ImageIcon,
+  Sparkles
+} from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
 import { logoImg } from '../assets/images';
 
 export default function HeaderNavbar({ 
   onOpenVolunteerModal, 
+  onOpenDonationModal,
   onOpenDharmaDhwaj, 
   currentPage = 'home', 
   onNavigateHome,
@@ -32,14 +48,40 @@ export default function HeaderNavbar({
     }
   };
 
+  // Icon mapping helper
+  const renderIcon = (iconName) => {
+    switch (iconName) {
+      case 'Info':
+        return <Info className="w-4 h-4 text-amber-400 shrink-0" />;
+      case 'Building2':
+        return <Building2 className="w-4 h-4 text-amber-400 shrink-0" />;
+      case 'Calendar':
+        return <Calendar className="w-4 h-4 text-amber-400 shrink-0" />;
+      case 'Flag':
+        return <Flag className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />;
+      case 'Flame':
+        return <Flame className="w-4 h-4 text-amber-400 shrink-0" />;
+      case 'Users':
+        return <Users className="w-4 h-4 text-amber-400 shrink-0" />;
+      default:
+        return <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />;
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Main Glassmorphic Navigation Bar */}
       <div className="backdrop-blur-md bg-[#180404]/95 border-b border-amber-500/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between min-h-[3.6rem] sm:min-h-[4rem] py-1.5 sm:py-2 gap-2 sm:gap-4">
-            {/* Logo and Brand Title */}
-            <a href="#" onClick={handleBrandClick} className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+        <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8">
+          <div className="flex items-center justify-between min-h-[3.8rem] sm:min-h-[4.2rem] py-1.5 sm:py-2 gap-2 sm:gap-4">
+            
+            {/* 1. LEFT SIDE: Logo & Brand Title */}
+            <a 
+              href="#" 
+              onClick={handleBrandClick} 
+              className="flex items-center gap-2 sm:gap-3 group shrink-0"
+              title="श्री राम सेवा समिति, छतरपुर"
+            >
               <div className="relative shrink-0">
                 <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_18px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
@@ -68,62 +110,164 @@ export default function HeaderNavbar({
               </div>
             </a>
 
-            {/* Desktop Navigation Links - Single Horizontal Line */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-1.5">
-              {t.nav.links.map((link) => {
-                const isMandal = link.href === '#mandals';
-                return (
-                  <React.Fragment key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleLinkClick(e, link.href)}
-                      className={`whitespace-nowrap px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 ${
-                        isMandal
-                          ? 'text-amber-300 bg-amber-500/15 border border-amber-500/40 hover:bg-amber-500/30 font-semibold'
-                          : 'text-amber-100/90 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30'
-                      }`}
-                    >
-                      {isMandal && <span className="mr-1">🚩</span>}
-                      {link.name}
-                    </a>
-                    {isMandal && (
-                      <button
-                        onClick={onOpenDharmaDhwaj}
-                        className={`whitespace-nowrap px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
-                          currentPage === 'dharma-dhwaj'
-                            ? 'text-white bg-gradient-to-r from-red-800 to-amber-700 border border-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)]'
-                            : 'text-amber-200 bg-gradient-to-r from-red-950 via-[#380606] to-red-950 border border-amber-400/60 hover:border-amber-300 hover:text-white hover:bg-red-900/60 shadow-[0_0_12px_rgba(245,158,11,0.3)]'
-                        }`}
-                        title={lang === 'hi' ? 'धर्म ध्वजा यात्रा विशेष आलेख' : 'Dharma Dhwaj Yatra Article'}
+            {/* 2. CENTER: Clean Navigation Links with Hover Dropdown Menus */}
+            <nav className="hidden lg:flex items-center space-x-1.5 xl:space-x-2">
+              {t.nav.categories ? (
+                t.nav.categories.map((cat) => {
+                  const hasDropdown = cat.items && cat.items.length > 0;
+
+                  if (!hasDropdown) {
+                    return (
+                      <a
+                        key={cat.id}
+                        href={cat.href}
+                        onClick={(e) => handleLinkClick(e, cat.href)}
+                        className="px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-amber-100 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30 transition-all duration-200 whitespace-nowrap"
                       >
-                        <Flag className="w-3.5 h-3.5 text-amber-400 fill-amber-400 shrink-0" />
-                        <span>{lang === 'hi' ? 'धर्म ध्वजा यात्रा' : 'Dharma Dhwaj'}</span>
-                      </button>
-                    )}
-                  </React.Fragment>
-                );
-              })}
+                        {cat.label}
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <div key={cat.id} className="relative group">
+                      <a
+                        href={cat.href || '#'}
+                        onClick={(e) => {
+                          if (cat.href) {
+                            handleLinkClick(e, cat.href);
+                          } else {
+                            e.preventDefault();
+                          }
+                        }}
+                        className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                          cat.id === 'events' && currentPage === 'dharma-dhwaj'
+                            ? 'text-amber-300 bg-amber-500/20 border border-amber-500/50'
+                            : 'text-amber-100 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30'
+                        }`}
+                      >
+                        <span>{cat.label}</span>
+                        <ChevronDown className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-180 transition-transform duration-200" />
+                      </a>
+
+                      {/* Dropdown Menu on Hover */}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50 min-w-[260px] xl:min-w-[280px]">
+                        <div className="backdrop-blur-xl bg-[#1d0303]/98 border border-amber-500/40 rounded-xl p-2 shadow-[0_12px_40px_rgba(0,0,0,0.85)] space-y-1">
+                          {cat.items.map((item, idx) => {
+                            if (item.action === 'dharmaDhwaj') {
+                              return (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() => onOpenDharmaDhwaj?.()}
+                                  className={`w-full text-left p-2.5 rounded-lg flex items-start gap-2.5 transition-all duration-150 cursor-pointer ${
+                                    currentPage === 'dharma-dhwaj'
+                                      ? 'bg-gradient-to-r from-red-900 to-amber-950 border border-amber-400/60 text-white shadow-sm'
+                                      : 'hover:bg-red-950/80 border border-transparent hover:border-amber-500/30 text-amber-100 hover:text-white'
+                                  }`}
+                                >
+                                  <div className="mt-0.5">{renderIcon(item.icon)}</div>
+                                  <div className="min-w-0">
+                                    <div className="text-xs xl:text-sm font-bold text-amber-300 flex items-center gap-1.5">
+                                      <span>{item.name}</span>
+                                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-red-600/60 text-amber-200 border border-amber-400/30 font-semibold">
+                                        विशेष
+                                      </span>
+                                    </div>
+                                    {item.desc && (
+                                      <div className="text-[11px] text-amber-200/70 truncate">
+                                        {item.desc}
+                                      </div>
+                                    )}
+                                  </div>
+                                </button>
+                              );
+                            }
+
+                            if (item.action === 'doorAnimation') {
+                              return (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() => onOpenDoorAnimation?.()}
+                                  className="w-full text-left p-2.5 rounded-lg flex items-start gap-2.5 hover:bg-red-950/80 border border-transparent hover:border-amber-500/30 text-amber-100 hover:text-white transition-all duration-150 cursor-pointer"
+                                >
+                                  <div className="mt-0.5">{renderIcon(item.icon)}</div>
+                                  <div className="min-w-0">
+                                    <div className="text-xs xl:text-sm font-bold text-amber-300">
+                                      {item.name}
+                                    </div>
+                                    {item.desc && (
+                                      <div className="text-[11px] text-amber-200/70 truncate">
+                                        {item.desc}
+                                      </div>
+                                    )}
+                                  </div>
+                                </button>
+                              );
+                            }
+
+                            return (
+                              <a
+                                key={idx}
+                                href={item.href}
+                                onClick={(e) => handleLinkClick(e, item.href)}
+                                className="w-full text-left p-2.5 rounded-lg flex items-start gap-2.5 hover:bg-red-950/80 border border-transparent hover:border-amber-500/30 text-amber-100 hover:text-white transition-all duration-150 block"
+                              >
+                                <div className="mt-0.5">{renderIcon(item.icon)}</div>
+                                <div className="min-w-0">
+                                  <div className="text-xs xl:text-sm font-semibold text-amber-200">
+                                    {item.name}
+                                  </div>
+                                  {item.desc && (
+                                    <div className="text-[11px] text-amber-200/70 truncate">
+                                      {item.desc}
+                                    </div>
+                                  )}
+                                </div>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                /* Fallback if categories not loaded */
+                t.nav.links.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="px-2.5 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-amber-100 hover:text-white hover:bg-red-950/60 transition"
+                  >
+                    {link.name}
+                  </a>
+                ))
+              )}
             </nav>
 
-            {/* Actions: Language Switcher, Door Animation & Volunteer CTA */}
-            <div className="hidden sm:flex items-center gap-2 shrink-0">
-              {onOpenDoorAnimation && (
-                <button
-                  onClick={onOpenDoorAnimation}
-                  className="whitespace-nowrap px-2.5 py-1.5 rounded-full text-xs font-bold text-amber-200 bg-red-950/80 hover:bg-red-900 border border-amber-400/50 hover:border-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.25)] flex items-center gap-1 cursor-pointer transition"
-                  title="मंदिर के कपाट खुलने का एनीमेशन देखें"
-                >
-                  <span>🚩 कपाट दर्शन</span>
-                </button>
-              )}
-
-              {/* Language Switcher */}
-              <LanguageSwitcher />
-
-              {/* Volunteer CTA */}
+            {/* 3. RIGHT SIDE: Donation Button + Volunteer Form Button + Language Switcher */}
+            <div className="hidden sm:flex items-center gap-2 xl:gap-2.5 shrink-0">
+              
+              {/* Donation / Sahyog Button (Opens Demo QR Modal) */}
               <button
+                type="button"
+                onClick={onOpenDonationModal}
+                className="group relative overflow-hidden px-3 xl:px-3.5 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-red-950 via-[#3a0606] to-red-950 border border-amber-400/80 hover:border-amber-300 text-amber-300 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.25)] hover:shadow-[0_0_22px_rgba(245,158,11,0.5)] transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5"
+                title={lang === 'hi' ? 'दान एवं पावन सहयोग (Demo QR)' : 'Donation & Contribution (Demo QR)'}
+              >
+                <QrCode className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform shrink-0" />
+                <span>{t.nav.donateBtn || 'दान / सहयोग'}</span>
+              </button>
+
+              {/* Volunteer CTA Button ("bolinder matlab kidi or jord ne kaa form") */}
+              <button
+                type="button"
                 onClick={onOpenVolunteerModal}
-                className="relative group overflow-hidden px-3.5 py-1.5 rounded-full font-medium text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white font-semibold shadow-[0_0_15px_rgba(245,158,11,0.4)] hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0"
+                className="relative group overflow-hidden px-3.5 xl:px-4 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.4)] hover:shadow-[0_0_22px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0"
+                title={lang === 'hi' ? 'स्वयंसेवक के रूप में जुड़ें' : 'Join as a Volunteer'}
               >
                 <span className="relative z-10 flex items-center gap-1.5 whitespace-nowrap">
                   <HeartHandshake className="w-3.5 h-3.5 text-stone-950 group-hover:text-amber-200 transition-colors shrink-0" />
@@ -131,39 +275,39 @@ export default function HeaderNavbar({
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
+
+              {/* Language Switcher */}
+              <LanguageSwitcher />
             </div>
 
-            {/* Mobile Menu Actions */}
+            {/* Mobile Header Actions (visible on mobile / small screens) */}
             <div className="flex items-center gap-1.5 lg:hidden">
-              {onOpenDoorAnimation && (
-                <button
-                  onClick={onOpenDoorAnimation}
-                  className="px-2 py-1 rounded-full bg-red-950/90 border border-amber-400/60 text-amber-200 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer"
-                  title="कपाट दर्शन"
-                >
-                  <span>🚩 कपाट</span>
-                </button>
-              )}
+              {/* Quick Donation Button on Mobile */}
               <button
-                onClick={onOpenDharmaDhwaj}
-                className={`px-2 py-1 rounded-full border text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer ${
-                  currentPage === 'dharma-dhwaj'
-                    ? 'bg-red-800 border-amber-300 text-white'
-                    : 'bg-gradient-to-r from-red-950 to-amber-950 border-amber-400/60 text-amber-200'
-                }`}
+                type="button"
+                onClick={onOpenDonationModal}
+                className="px-2 py-1 rounded-full bg-red-950 border border-amber-400/80 text-amber-300 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer"
+                title="दान / सहयोग"
               >
-                <Flag className="w-3 h-3 text-amber-400 fill-amber-400" />
-                <span>यात्रा</span>
+                <QrCode className="w-3 h-3 text-amber-400" />
+                <span>दान</span>
               </button>
-              <a
-                href="#mandals"
-                onClick={(e) => handleLinkClick(e, '#mandals')}
-                className="px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold flex items-center gap-1"
+
+              {/* Quick Volunteer Button on Mobile */}
+              <button
+                type="button"
+                onClick={onOpenVolunteerModal}
+                className="px-2 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer"
+                title="स्वयंसेवक बनें"
               >
-                <Layers className="w-3 h-3 text-amber-400" />
-                <span>मंडल</span>
-              </a>
+                <HeartHandshake className="w-3 h-3 text-stone-950" />
+                <span>जुड़ें</span>
+              </button>
+
+              {/* Language Switcher */}
               <LanguageSwitcher />
+
+              {/* Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-1.5 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none cursor-pointer"
@@ -175,55 +319,91 @@ export default function HeaderNavbar({
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#150303] border-b border-amber-500/30 px-4 pt-3 pb-5 space-y-2">
+          <div className="lg:hidden bg-[#150303] border-b border-amber-500/30 px-4 pt-3 pb-6 space-y-3">
+            {/* Action Buttons in Mobile Drawer */}
+            <div className="grid grid-cols-2 gap-2 pb-2 border-b border-amber-500/20">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenDonationModal?.();
+                }}
+                className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-red-950 border border-amber-400/70 text-amber-200 text-xs font-bold shadow cursor-pointer"
+              >
+                <QrCode className="w-3.5 h-3.5 text-amber-400" />
+                <span>{t.nav.donateBtn || 'दान / सहयोग'}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenVolunteerModal?.();
+                }}
+                className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 text-xs font-bold shadow cursor-pointer"
+              >
+                <HeartHandshake className="w-3.5 h-3.5 text-stone-950" />
+                <span>{t.nav.joinBtn}</span>
+              </button>
+            </div>
+
+            {/* Special Dharma Dhwaj Yatra link */}
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenDharmaDhwaj?.();
               }}
-              className={`w-full text-left px-3 py-2.5 rounded-md text-sm font-bold flex items-center gap-2 cursor-pointer shadow-sm mb-2 ${
+              className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 cursor-pointer shadow-sm ${
                 currentPage === 'dharma-dhwaj'
                   ? 'bg-red-800 border border-amber-300 text-white'
                   : 'bg-gradient-to-r from-red-950 to-[#2e0505] border border-amber-400/50 text-amber-200'
               }`}
             >
-              <Flag className="w-4 h-4 text-amber-400 fill-amber-400" />
-              <span>{lang === 'hi' ? '🚩 धर्म ध्वजा यात्रा (विशेष इतिहास व आलेख)' : '🚩 Dharma Dhwaj Yatra (History)'}</span>
+              <Flag className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />
+              <span>{lang === 'hi' ? '🚩 धर्म ध्वजा यात्रा (विशेष आलेख)' : '🚩 Dharma Dhwaj Yatra'}</span>
             </button>
-            {t.nav.links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  handleLinkClick(e, link.href);
-                }}
-                className="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-red-900/40 hover:text-amber-300 border border-transparent hover:border-amber-500/20"
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="pt-3 border-t border-amber-500/20 flex flex-col gap-2">
-              <a
-                href="#mandals"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-red-950 via-[#3a0909] to-red-950 border border-amber-500/40 text-amber-300 hover:text-white shadow"
-              >
-                <Layers className="w-4 h-4 text-amber-400" />
-                <span>{lang === 'hi' ? '🚩 समस्त १३ मंडल' : '🚩 All 13 Mandals'}</span>
-              </a>
+
+            {/* Door animation trigger */}
+            {onOpenDoorAnimation && (
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenVolunteerModal();
+                  onOpenDoorAnimation?.();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-amber-500 to-red-600 text-stone-950 hover:text-white shadow cursor-pointer"
+                className="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-amber-200 bg-red-950/40 border border-amber-500/20 cursor-pointer"
               >
-                <HeartHandshake className="w-4 h-4" />
-                <span>{t.nav.joinBtn}</span>
+                <Flame className="w-4 h-4 text-amber-400" />
+                <span>{lang === 'hi' ? '🚩 कपाट दर्शन एनिमेशन देखें' : '🚩 View Temple Door Darshan'}</span>
               </button>
+            )}
+
+            {/* Categorized Links in Mobile Drawer */}
+            <div className="space-y-1 pt-1">
+              {t.nav.links.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    handleLinkClick(e, link.href);
+                  }}
+                  className="block px-3 py-2 rounded-lg text-sm font-medium text-amber-100 hover:bg-red-900/40 hover:text-amber-300 border border-transparent hover:border-amber-500/20"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* 13 Mandals quick pill */}
+            <div className="pt-2 border-t border-amber-500/20">
+              <a
+                href="#mandals"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full font-semibold text-xs bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:text-white shadow"
+              >
+                <Layers className="w-3.5 h-3.5 text-amber-400" />
+                <span>{lang === 'hi' ? '🚩 समस्त १३ मंडल विवरण' : '🚩 All 13 Mandals Details'}</span>
+              </a>
             </div>
           </div>
         )}

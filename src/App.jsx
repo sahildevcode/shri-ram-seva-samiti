@@ -11,6 +11,7 @@ import TimelineSection from './components/TimelineSection';
 import GallerySection from './components/GallerySection';
 import FooterSection from './components/FooterSection';
 import VolunteerModal from './components/VolunteerModal';
+import DonationModal from './components/DonationModal';
 import QuickEventModal from './components/QuickEventModal';
 import DharmaDhwajPage from './components/DharmaDhwajPage';
 import TempleDoorEntrance from './components/TempleDoorEntrance';
@@ -20,6 +21,7 @@ function MainLayout() {
   const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'dharma-dhwaj'
   const [isVolunteerModalOpen, setIsVolunteerModalOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [selectedQuickEvent, setSelectedQuickEvent] = useState(null);
   const [isDoorIntroOpen, setIsDoorIntroOpen] = useState(true); // Divine Temple Doors Opening Animation on Entry
 
@@ -84,6 +86,7 @@ function MainLayout() {
         currentPage={currentPage}
         onNavigateHome={handleNavigateHome}
         onOpenVolunteerModal={() => setIsVolunteerModalOpen(true)}
+        onOpenDonationModal={() => setIsDonationModalOpen(true)}
         onOpenDharmaDhwaj={handleOpenDharmaDhwaj}
         onOpenDoorAnimation={handleOpenDoorAnimation}
       />
@@ -126,12 +129,21 @@ function MainLayout() {
       )}
 
       {/* Footer Section */}
-      <FooterSection onOpenVolunteerModal={() => setIsVolunteerModalOpen(true)} />
+      <FooterSection 
+        onOpenVolunteerModal={() => setIsVolunteerModalOpen(true)} 
+        onOpenDonationModal={() => setIsDonationModalOpen(true)}
+      />
 
       {/* Volunteer / Join Us Modal */}
       <VolunteerModal
         isOpen={isVolunteerModalOpen}
         onClose={() => setIsVolunteerModalOpen(false)}
+      />
+
+      {/* Donation / Sahyog Demo QR Modal */}
+      <DonationModal
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
       />
 
       {/* Quick Event Modal for other items (Ramalaya, Prabhat Pheri, Ram Darbar) */}
