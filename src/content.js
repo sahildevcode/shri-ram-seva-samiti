@@ -30,7 +30,7 @@ export const content = {
         },
         {
           id: 'events',
-          label: 'आयोजन व दर्शन',
+          label: 'आयोजन',
           items: [
             { name: 'धार्मिक कार्यक्रम', desc: 'पिछले एवं आगामी महाआयोजन', href: '#events', icon: 'Calendar' },
             { name: '🚩 धर्म ध्वजा यात्रा', desc: 'विशाल नगर शोभायात्रा व इतिहास', action: 'dharmaDhwaj', icon: 'Flag', isSpecial: true },
@@ -39,7 +39,7 @@ export const content = {
         },
         {
           id: 'mandals',
-          label: 'समस्त मंडल',
+          label: 'मंडल',
           href: '#mandals',
           items: [
             { name: '१३ संगठनात्मक मंडल', desc: 'छतरपुर नगर के समस्त मंडल व संयोजक', href: '#mandals', icon: 'Users' },
@@ -531,7 +531,7 @@ export const content = {
         },
         {
           id: 'events',
-          label: 'Aayojan & Darshan',
+          label: 'Aayojan',
           items: [
             { name: 'Dharmik Karyakram', desc: 'Past & Upcoming Mega Events', href: '#events', icon: 'Calendar' },
             { name: '🚩 Dharma Dhwaj Yatra', desc: 'Grand City Procession & History', action: 'dharmaDhwaj', icon: 'Flag', isSpecial: true },
@@ -540,7 +540,7 @@ export const content = {
         },
         {
           id: 'mandals',
-          label: 'Samast Mandal',
+          label: 'Mandal',
           href: '#mandals',
           items: [
             { name: '13 Sangathanik Mandal', desc: 'All Ward Mandals & Coordinators', href: '#mandals', icon: 'Users' },

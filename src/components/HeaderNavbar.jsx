@@ -12,7 +12,6 @@ import {
   Info, 
   Flame, 
   Users, 
-  Image as ImageIcon,
   Sparkles
 } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -72,18 +71,18 @@ export default function HeaderNavbar({
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Main Glassmorphic Navigation Bar */}
       <div className="backdrop-blur-md bg-[#180404]/95 border-b border-amber-500/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-        <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8">
-          <div className="flex items-center justify-between min-h-[3.8rem] sm:min-h-[4.2rem] py-1.5 sm:py-2 gap-2 sm:gap-4">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="flex items-center justify-between min-h-[3.6rem] sm:min-h-[4rem] py-1.5 gap-2 sm:gap-3">
             
             {/* 1. LEFT SIDE: Logo & Brand Title */}
             <a 
               href="#" 
               onClick={handleBrandClick} 
-              className="flex items-center gap-2 sm:gap-3 group shrink-0"
+              className="flex items-center gap-2 sm:gap-2.5 group shrink-0"
               title="श्री राम सेवा समिति, छतरपुर"
             >
               <div className="relative shrink-0">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_18px_rgba(245,158,11,0.8)] transition-all duration-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-amber-500 via-red-600 to-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.5)] group-hover:shadow-[0_0_16px_rgba(245,158,11,0.8)] transition-all duration-300">
                   <img
                     src={logoImg}
                     alt="Shri Ram Seva Samiti Logo"
@@ -91,18 +90,18 @@ export default function HeaderNavbar({
                     decoding="async"
                   />
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-red-950 rounded-full w-3.5 h-3.5 sm:w-4 sm:h-4 flex items-center justify-center font-bold text-[8px] sm:text-[9px] shadow">
+                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-red-950 rounded-full w-3.5 h-3.5 flex items-center justify-center font-bold text-[8px] shadow">
                   ॐ
                 </div>
               </div>
 
-              <div className="flex flex-col text-left justify-center">
-                <span className={`text-sm sm:text-base lg:text-lg font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors whitespace-nowrap leading-tight ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
+              <div className="flex flex-col text-left justify-center min-w-0">
+                <span className={`text-sm sm:text-base xl:text-lg font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors whitespace-nowrap leading-tight ${lang === 'hi' ? 'font-rozha' : 'font-cinzel'}`}>
                   {t.nav.brand}
                 </span>
                 <span className="text-[10px] sm:text-[11px] font-poppins text-amber-400/90 flex items-center gap-1.5 whitespace-nowrap leading-tight">
                   <span>{t.nav.city}</span>
-                  <span className="hidden xl:inline-flex items-center gap-1.5 text-amber-200/70">
+                  <span className="hidden 2xl:inline-flex items-center gap-1.5 text-amber-200/70">
                     <span className="inline-block w-1 h-1 rounded-full bg-amber-500"></span>
                     <span>{t.nav.motto}</span>
                   </span>
@@ -111,7 +110,7 @@ export default function HeaderNavbar({
             </a>
 
             {/* 2. CENTER: Clean Navigation Links with Hover Dropdown Menus */}
-            <nav className="hidden lg:flex items-center space-x-1.5 xl:space-x-2">
+            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
               {t.nav.categories ? (
                 t.nav.categories.map((cat) => {
                   const hasDropdown = cat.items && cat.items.length > 0;
@@ -122,7 +121,7 @@ export default function HeaderNavbar({
                         key={cat.id}
                         href={cat.href}
                         onClick={(e) => handleLinkClick(e, cat.href)}
-                        className="px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-amber-100 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30 transition-all duration-200 whitespace-nowrap"
+                        className="px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-amber-100 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30 transition-all duration-200 whitespace-nowrap"
                       >
                         {cat.label}
                       </a>
@@ -140,18 +139,18 @@ export default function HeaderNavbar({
                             e.preventDefault();
                           }
                         }}
-                        className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                        className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${
                           cat.id === 'events' && currentPage === 'dharma-dhwaj'
                             ? 'text-amber-300 bg-amber-500/20 border border-amber-500/50'
                             : 'text-amber-100 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-amber-500/30'
                         }`}
                       >
                         <span>{cat.label}</span>
-                        <ChevronDown className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-180 transition-transform duration-200" />
+                        <ChevronDown className="w-3 h-3 text-amber-400 group-hover:rotate-180 transition-transform duration-200" />
                       </a>
 
                       {/* Dropdown Menu on Hover */}
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50 min-w-[260px] xl:min-w-[280px]">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-50 min-w-[250px] xl:min-w-[270px]">
                         <div className="backdrop-blur-xl bg-[#1d0303]/98 border border-amber-500/40 rounded-xl p-2 shadow-[0_12px_40px_rgba(0,0,0,0.85)] space-y-1">
                           {cat.items.map((item, idx) => {
                             if (item.action === 'dharmaDhwaj') {
@@ -234,7 +233,7 @@ export default function HeaderNavbar({
                   );
                 })
               ) : (
-                /* Fallback if categories not loaded */
+                /* Fallback */
                 t.nav.links.map((link) => (
                   <a
                     key={link.name}
@@ -249,44 +248,43 @@ export default function HeaderNavbar({
             </nav>
 
             {/* 3. RIGHT SIDE: Donation Button + Volunteer Form Button + Language Switcher */}
-            <div className="hidden sm:flex items-center gap-2 xl:gap-2.5 shrink-0">
+            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
               
               {/* Donation / Sahyog Button (Opens Demo QR Modal) */}
               <button
                 type="button"
                 onClick={onOpenDonationModal}
-                className="group relative overflow-hidden px-3 xl:px-3.5 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-red-950 via-[#3a0606] to-red-950 border border-amber-400/80 hover:border-amber-300 text-amber-300 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.25)] hover:shadow-[0_0_22px_rgba(245,158,11,0.5)] transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5"
+                className="group relative overflow-hidden px-2.5 xl:px-3 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-red-950 via-[#3a0606] to-red-950 border border-amber-400/80 hover:border-amber-300 text-amber-300 hover:text-white shadow-[0_0_12px_rgba(245,158,11,0.25)] hover:shadow-[0_0_18px_rgba(245,158,11,0.5)] transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5"
                 title={lang === 'hi' ? 'दान एवं पावन सहयोग (Demo QR)' : 'Donation & Contribution (Demo QR)'}
               >
                 <QrCode className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform shrink-0" />
-                <span>{t.nav.donateBtn || 'दान / सहयोग'}</span>
+                <span className="hidden xl:inline">{t.nav.donateBtn || 'दान / सहयोग'}</span>
+                <span className="xl:hidden">{lang === 'hi' ? 'दान' : 'Donate'}</span>
               </button>
 
               {/* Volunteer CTA Button ("bolinder matlab kidi or jord ne kaa form") */}
               <button
                 type="button"
                 onClick={onOpenVolunteerModal}
-                className="relative group overflow-hidden px-3.5 xl:px-4 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.4)] hover:shadow-[0_0_22px_rgba(245,158,11,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0"
+                className="relative group overflow-hidden px-3 xl:px-3.5 py-1.5 rounded-full font-bold text-xs xl:text-sm bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-stone-950 hover:text-white shadow-[0_0_12px_rgba(245,158,11,0.35)] hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5"
                 title={lang === 'hi' ? 'स्वयंसेवक के रूप में जुड़ें' : 'Join as a Volunteer'}
               >
-                <span className="relative z-10 flex items-center gap-1.5 whitespace-nowrap">
-                  <HeartHandshake className="w-3.5 h-3.5 text-stone-950 group-hover:text-amber-200 transition-colors shrink-0" />
-                  <span className="whitespace-nowrap">{t.nav.joinBtn}</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <HeartHandshake className="w-3.5 h-3.5 text-stone-950 group-hover:text-amber-200 transition-colors shrink-0" />
+                <span className="hidden xl:inline">{t.nav.joinBtn}</span>
+                <span className="xl:hidden">{lang === 'hi' ? 'स्वयंसेवक' : 'Volunteer'}</span>
               </button>
 
-              {/* Language Switcher */}
+              {/* Language Switcher (Compact single toggle) */}
               <LanguageSwitcher />
             </div>
 
             {/* Mobile Header Actions (visible on mobile / small screens) */}
-            <div className="flex items-center gap-1.5 lg:hidden">
+            <div className="flex items-center gap-1.5 lg:hidden shrink-0">
               {/* Quick Donation Button on Mobile */}
               <button
                 type="button"
                 onClick={onOpenDonationModal}
-                className="px-2 py-1 rounded-full bg-red-950 border border-amber-400/80 text-amber-300 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer"
+                className="px-2 py-1 rounded-full bg-red-950 border border-amber-400/80 text-amber-300 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer shrink-0"
                 title="दान / सहयोग"
               >
                 <QrCode className="w-3 h-3 text-amber-400" />
@@ -297,7 +295,7 @@ export default function HeaderNavbar({
               <button
                 type="button"
                 onClick={onOpenVolunteerModal}
-                className="px-2 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer"
+                className="px-2 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer shrink-0"
                 title="स्वयंसेवक बनें"
               >
                 <HeartHandshake className="w-3 h-3 text-stone-950" />
@@ -310,7 +308,7 @@ export default function HeaderNavbar({
               {/* Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none cursor-pointer"
+                className="p-1.5 rounded-lg bg-red-950/60 border border-amber-500/30 text-amber-300 hover:text-white focus:outline-none cursor-pointer shrink-0"
                 aria-label="Navigation menu toggle"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
