@@ -74,7 +74,7 @@ export default function FooterSection({ onOpenVolunteerModal }) {
                 <>
                   <li>• भव्य रामनवमी जन्मोत्सव शोभायात्रा</li>
                   <li>• नगर धर्म ध्वज यात्रा व संकीर्तन</li>
-                  <li>• श्रावण मास विशाल कांवड़ यात्रा</li>
+                  <li>• प्रातः प्रभात फेरी व सुंदरकांड पाठ</li>
                   <li>• अन्नक्षेत्र व महाप्रसाद भंडारा सेवा</li>
                   <li>• सामाजिक समरसता व रक्तदान शिविर</li>
                   <li>• सनातन संस्कृति व युवा संस्कार</li>
@@ -83,7 +83,7 @@ export default function FooterSection({ onOpenVolunteerModal }) {
                 <>
                   <li>• Grand Ram Navami Shobhayatra</li>
                   <li>• City Dharma Dhwaj Yatra & Sankirtan</li>
-                  <li>• Shravan Month Holy Kanwar Yatra</li>
+                  <li>• Morning Prabhat Pheri & Sunderkand Path</li>
                   <li>• Annakshetra & Mahaprasad Seva</li>
                   <li>• Social Harmony & Blood Donation Camps</li>
                   <li>• Sanatan Culture & Youth Sanskar</li>

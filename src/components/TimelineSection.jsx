@@ -32,11 +32,11 @@ export default function TimelineSection() {
       year: '2023',
       title: lang === 'hi' ? 'धार्मिक एवं सांस्कृतिक गतिविधियाँ' : 'Dharmik & Cultural Activities',
       source: lang === 'hi' ? 'मध्य प्रदेश राज्य समाचार संदर्भ' : 'Madhya Pradesh State News Report',
-      date: lang === 'hi' ? 'अगस्त 2023' : 'August 2023',
+      date: lang === 'hi' ? 'वर्ष २०२३' : 'Year 2023',
       desc: lang === 'hi'
-        ? 'अगस्त 2023 में छतरपुर में समिति द्वारा भव्य कांवड़ यात्रा आयोजित किए जाने की रिपोर्ट प्रकाशित हुई, जिसमें सनातन संस्कृति व सामाजिक समरसता का भव्य स्वरूप परिलक्षित हुआ।'
-        : 'August 2023 mein Chhatarpur mein samiti dwara grand Kanwar Yatra organize karne ki news report aayi, jisme Sanatan culture aur social harmony ka grand roop dekhne ko mila.',
-      tag: lang === 'hi' ? 'कांवड़ यात्रा' : 'Kanwar Yatra',
+        ? 'छतरपुर में समिति द्वारा भव्य धर्म ध्वजा यात्रा, प्रातः प्रभात फेरी, सुंदरकांड संकीर्तन एवं सामाजिक समरसता की गतिविधियों का विराट विस्तार हुआ।'
+        : 'Chhatarpur mein samiti dwara grand Dharma Dhwaj Yatra, prabhat pheri, Sunderkand sankirtan aur social harmony initiatives ka grand expansion hua.',
+      tag: lang === 'hi' ? 'धर्म ध्वज व संकीर्तन' : 'Dharma Dhwaj & Sankirtan',
     },
     {
       year: '2024',

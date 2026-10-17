@@ -79,14 +79,14 @@ export default function GallerySection() {
     },
     {
       id: 6,
-      title: lang === 'hi' ? 'श्रावण मास पवित्र कांवड़ यात्रा' : 'Shravan Maas Sacred Kanwar Yatra',
+      title: lang === 'hi' ? 'भव्य ५१+ फीट धर्म ध्वजा पूजन एवं शोभायात्रा' : 'Grand 51+ Feet Dharma Dhwaj Pujan & Shobhayatra',
       category: 'shobhayatra',
       categoryName: lang === 'hi' ? 'शोभायात्रा व ध्वज' : 'Shobhayatra & Dhwaj',
-      image: 'https://images.unsplash.com/photo-1609342122563-a43ac8917a3a?q=80&w=1000&auto=format&fit=crop',
-      location: lang === 'hi' ? 'पन्ना नाका से महाकालेश्वर' : 'Panna Naka se Mahakaleshwar',
+      image: galleryImg,
+      location: lang === 'hi' ? 'छत्रसाल चौक, छतरपुर' : 'Chhatrasal Chowk, Chhatarpur',
       desc: lang === 'hi'
-        ? 'बोल बम एवं हर-हर महादेव के जयकारों के साथ पवित्र जलाभिषेक हेतु कांवड़ियों का उत्साह।'
-        : 'Bol Bam aur Har Har Mahadev ke naaro ke sath jalabhishek karne nikle kanwariyas ka josh.',
+        ? 'विशाल धर्म ध्वज पूजन, संकीर्तन और जय श्रीराम के उद्घोष के साथ नगर भ्रमण।'
+        : 'Grand Dharma Dhwaj pujan, sankirtan aur Jai Shri Ram naaro ke sath nagar bhraman.',
     },
     {
       id: 7,
